@@ -24,43 +24,63 @@ int main()
         std::cout << "tura gracza " << player << std::endl;       
         std::string input;
         std::cin >> input;
-        
-        
-        int positionX, positionY;
-        positionX = toint(input[0]);
-        positionY = reverse(input[1]);			//przypisz pierwszy adres jako in 0, 1
-        
-		GameObject* address = Board[positionX][positionY]; //nie wiemy jaki typ :C
-        // GameObject*  lub  GameObjectPtr
-        if (input.size() == 2)
+		int positionX,	 //cyfry
+			positionY,   //literki
+			targetX,
+			targetY;
+		
+		if (input.size() == 2) {
+			positionY = toint(input[0]);
+			positionX = reverse(input[1]);  //prosze napisać reverse now!!!
+		}
+		else if (input.size() == 3) {
+			positionY = toint(input[0]);
+			positionX = reverse(input[1] * 10 + input[2]);
+			
+		}
+		else if (input.size() == 5) {
+			positionY = toint(input[0]);
+			positionX = reverse(input[1]);
+			targetY = toint
+		}
+		else if (input.size() == 6) {
+			positionY = toint(input[0]);
+			if (input[3] == ' ') {
+				positionY = toint(input[0]);
+				positionX = reverse(input[1]);
+			}
+			else {
+				positionY = toint(input[0]);
+				positionX = reverse(input[1] * 10 + input[2]);
+			}
+		}
+		else if (input.size() == 7) {
+			positionY = toint(input[0]);
+			positionX = reverse(input[1] * 10 + input[2]);
+		}
+		else error("zly input dales!!");
+
+		GameObject* address = Board[positionX][positionY]; 
+        if (input.size() == 2 || input.size() == 3)
         {
-            address->reveal();
+			GameObject* address = [positionY][positionX];
+
         }
-        else if (input.size() == 5)
+        else if (input.size() == 5|| input.size() == 6|| input.size() == 7)
         {
-            
-            
-            
-            if(isYour(player, positionX, positionY))  //Sprawdź czy ruszasz swój pionek
-            {
-                int targetX, targetY;
-                
-                targetX = toint(input[3]);
-                targetY = reverse(input[4]);		// przypisz in3,4 jako target
-                
-                int targetAddress = Board[targetX][targetY];
-                
-                if (targetAddress->Name == "Field")
-                {
-                    if (targetAddress->canMove(positionX, positionY, targetX, targetY))
-                    {
-                        targetAddress->move(positionX, positionY, targetX, targetY));
-                        round++;
-                    }
-                    
-                }
-                else if (targetAddress->Name == "Obstacle")
-                    error("interact with Obstacle");
+			if (targetAddress->Name == "Field")
+			{
+				if (targetAddress->canMove(targetX, targetY))
+				{
+					targetAddress->move(positionX, positionY, targetX, targetY);
+					round++;
+				}
+				else error("Nie możesz wykonać takiego ruchu");
+			}
+			else if (targetAddress->Name == "Obstacle") error("walisz w przeszkode");           
+            else if(isYour(player, positionX, positionY))  //Sprawdź czy ruszasz swój pionek
+            {               
+                GameObject* targetAddress = Board[targetX][targetY];               
                 else
                 {
                     //sprawdz czy to twój pionek

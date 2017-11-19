@@ -21,100 +21,66 @@ constexpr unsigned int str2int(const char* str, int h = 0);
 
 class GameObject{
 private:
-    
-public:
-    std::string Name;
-	bool owner;
-        
-    GameObject(std::string name = "uninitialized");
-    
-    virtual bool canMove(int targetX, int targetY);
-    virtual void reveal();
-    virtual bool checkFigure(bool player, int x, int y);
-	virtual void isYour(bool player, int x, int y);
-};
 
-static std::array<std::array <GameObject*, boardSize>, boardSize> Board;
+public:
+    std::string Name;        
+    GameObject(std::string name = "uninitialized");   
+    virtual void reveal();
+	int cordX;
+	int cordY;
+};
 
 class Figure : public GameObject{
 private:
-    int HP;
-    double movement;
-	int cordX;
-	int cordY;
-	
-    
+    const int HP;
+    double movement;	    
 public:
-    bool owner; // sprawdzamy ...
-    
-    
-    int dmg;
-    
-    
+    bool owner;        
+    const int dmg;        
 	Figure(std::string name, bool own, int HP, int dmg, int cordX, int cordY);
-    
+	Figure() = default;
     virtual bool isYour(bool player, int x, int y);
-    void reveal();
-    virtual void interact();
-    
-    void setHP(int hp);  // Zmienia HP obiektu o hp
-    
-    
+    void reveal();    
+    void setHP(int hp);  // Zmienia HP obiektu o hp        
     bool canMove(int targetX, int targetY);
-    virtual bool canAttak(int positionX, int positionY, int targetX, int targetY);
-    //int setAttak(int at, int def, int dmg, int arm); // Zwraca zadany dmg
-    
-    
-    
+    virtual bool canAttak(int positionX, int positionY, int targetX, int targetY);   
 };
-
 
 //dziedziczenie po klasie Figure
-class Warrior : public Figure
+class Pawn : public Figure  //pionek
 {
 public:
-    void interact();
+	Pawn(int HP, int dmg, std::string name);
     bool canAttak(int positionX, int positionY, int targetX, int targetY);
 };
 
-class Spearman : public Figure
+class Horseman : public Figure  //koñ
 {
 public:
-    void interact();
     bool canAttak(int positionX, int positionY, int targetX, int targetY);
 };
 
-class Archer : public Figure
+class Tower : public Figure //wie¿a
 {
 public:
-    void interact();
     bool canAttak(int positionX, int positionY, int targetX, int targetY);
 };
 
-class Horseman : public Figure
+class Bishop : public Figure  //goniec
 {
 public:
-    void interact();
     bool canAttak(int positionX, int positionY, int targetX, int targetY);
 };
 
-class Wartiger : public Figure
+class Queen : public Figure  //królowa
 {
 public:
-    void interact();
     bool canAttak(int positionX, int positionY, int targetX, int targetY);
 };
 
-class Knight : public Figure
+class King : public Figure  //król
 {
 public:
-    void interact();
     bool canAttak(int positionX, int positionY, int targetX, int targetY);
 };
 
-class King : public Figure
-{
-public:
-    void interact();
-    bool canAttak(int positionX, int positionY, int targetX, int targetY);
-};

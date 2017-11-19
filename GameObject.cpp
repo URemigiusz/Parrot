@@ -19,15 +19,12 @@ inline int toint(char c)
     }
 }
 
-constexpr unsigned int str2int(const char* str, int h = 0)
+/*constexpr unsigned int str2int(const char* str, int h = 0)
 {
     return !str[h] ? 5381 : (str2int(str, h+1) * 33) ^ str[h];
-}
+}*/
 
-int reverse(char a)
-{
-    return 8 - (a - '0');
-}
+
 
 
 
