@@ -1,6 +1,7 @@
-#pragma ones
+#pragma once
 
 using GameObjectPtr = GameObject*;
+
 
 class Line
 {
@@ -17,7 +18,6 @@ public:
 };
 
 
-
 class Board
 {
 private:
@@ -25,22 +25,20 @@ private:
     unsigned Y;
     Line* Rows;
 public:
-    Board(unsigned x, unsigned y, unsigned ostChance);
+    Board(unsigned x, unsigned y);
     ~Board();
     
     Line& operator[](unsigned index);
+    
+    int getX() const;    
+    int getY() const;
     
     void swap(unsigned x1, unsigned y1, unsigned x2, unsigned y2);
     void swap(std::string a, std::string b);
     void swap(std::string a);
     
-    /*
-     Create_Std_Board(int x, int y);
-     Create_Std_Board_With_Obstacles(int x, int y, int obsChance);
-     GetBoard_from_File(string fileName);
-     
-     */
-
+    void add_rand_obstacles(int x, int y, int obsChance);
+    void GetBoard_from_File(std::string fileName);
 };
 
 

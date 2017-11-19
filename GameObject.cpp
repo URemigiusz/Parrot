@@ -18,6 +18,7 @@ inline int toint(char c)
         return 0;
     }
 }
+
 constexpr unsigned int str2int(const char* str, int h = 0)
 {
     return !str[h] ? 5381 : (str2int(str, h+1) * 33) ^ str[h];
@@ -31,7 +32,7 @@ int reverse(char a)
 
 
 GameObject::GameObject(std::string name)
-:Name(name)
+    :Name(name)
 {
     
 }//getLine(plik, linia);       ===== Why is that???
@@ -41,7 +42,7 @@ void GameObject::reveal()
     std::cout << GameObject::Name << std::endl;
 }
 
-bool GameObject::canMove(int startX, int startY, int targetX, int targetY, double movement)
+bool GameObject::canMove(int targetX, int targetY)
 {
     error("wywolano canMove() na GameObject");
     return false;
@@ -49,8 +50,8 @@ bool GameObject::canMove(int startX, int startY, int targetX, int targetY, doubl
 
 
 
-Figure::Figure(std::string name, bool own, int HP, int dmg )
-:GameObject(name), owner(own), HP(HP), dmg(dmg)
+Figure::Figure(std::string name, bool own, int HP, int dmg, int cordX, int cordY )
+    :GameObject(name), owner(own), HP(HP), dmg(dmg)
 {
 }
 
@@ -66,13 +67,16 @@ void Figure::reveal()
 
 void Figure::setHP(int hp)
 {
-    if(hp < 0 ) Figure::HP += hp;
-    // else Figure::HP = hp;
+    HP += hp;
+		if (HP < 0) {
+			std::cout << "Z pola" << cordX << " " << cordY << "zniknęła figura" << Name << std::endl;
+	}
+   
 }
 
 
 
-bool Figure::canMove(int startX, int startY, int targetX, int targetY)
+bool Figure::canMove(int targetX, int targetY)
 {
     double required = 0;
     
@@ -81,8 +85,8 @@ bool Figure::canMove(int startX, int startY, int targetX, int targetY)
         return 0;
     }
     
-    double X = pow((startX - targetX), 2);
-    double Y = pow((startY - targetY), 2);
+    double X = pow((cordX - targetX), 2);
+    double Y = pow((cordY - targetY), 2);
     
     required = sqrt(X + Y);
     
@@ -92,32 +96,8 @@ bool Figure::canMove(int startX, int startY, int targetX, int targetY)
         return false;
 }
 
-void Figure::move(int startX, int startY, int targetX, int targetY)
-{
-    GameObject* p = Board[targetX][targetY];
-    Board[targetX][targetY] = Board[startX][startY];
-    Board[startX][startY] = p;
-    
-    if (!(targetX <= boardX-1 && targetX >= 0))
-    {
-        error("canMove -> wrong parameter: Number");
-    }
-    if (!(targetY <= boardY-1 && targetY >= 0))
-    {
-        error("canMove -> wrong parameter: Number");
-    }
-}
 
-int Figure::setAttak(int skill, int def, int dmg ,int arm) // Zwraca zadany dmg
-{
-    int force = rand() % 11 + 1;
-    int dif = skill - def;
-    if (5 <= force + dif)
-        return dmg - arm;
-    else
-        return 0;
-}
-bool Figure::checkOwner(bool player, int x, int y){
+bool Figure::isYour(bool player, int x, int y){
     return Board[x][y]->owner == player;
     
 }

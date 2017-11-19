@@ -1,44 +1,36 @@
 #include "Header.h"
 #include "Board.h"
 
-bool win         = 0;
-bool player       = 0;
-int round         = 1;
+static bool win          = 0;
+static bool player       = 0;
+static int round         = 1;
 
 int main()
 {
-    setTable();
     
-    //stworzenie obiektow
-    
-    openFile();
+        
+{   
+    //openFile();
+	/*trzeba zrobić aby z pliku wczytało nam
+	wymiar planszy
+	współżędne figur
+	współżędne obiektów
+	wszystkie zasoby figur
+	*/
     do{
-        
-        
-        /*if(player){
-         player = 0;
-         std::cout << "tura gracza " << player+<<std::endl;
-         }else{
-         player = 1;
-         std::cout << "tura gracza " << player <<std::endl;
-         }*/
-        if(round%2 == 0){
-            player = 1;
-            std::cout << "tura gracza " << player<<std::endl;
-        }else{
-            player = 0;
-            std::cout << "tura gracza " << player<<std::endl;
-        }// Nie łatwiej    Player = round % 2;                                       ??????
-         //                std::cout << "tura gracza " << player << std::endl;       ??????
+                
+
+        player = round % 2;                                       
+        std::cout << "tura gracza " << player << std::endl;       
         std::string input;
         std::cin >> input;
         
         
         int positionX, positionY;
         positionX = toint(input[0]);
-        positionY = reverse(input[1]);
+        positionY = reverse(input[1]);			//przypisz pierwszy adres jako in 0, 1
         
-        int address = Board[positionX][positionY]; //nie wiemy jaki typ :C
+		GameObject* address = Board[positionX][positionY]; //nie wiemy jaki typ :C
         // GameObject*  lub  GameObjectPtr
         if (input.size() == 2)
         {
@@ -49,45 +41,41 @@ int main()
             
             
             
-            if(checkOwner(player, positionX, positionY))
+            if(isYour(player, positionX, positionY))  //Sprawdź czy ruszasz swój pionek
             {
                 int targetX, targetY;
                 
                 targetX = toint(input[3]);
-                targetY = reverse(input[4]);
+                targetY = reverse(input[4]);		// przypisz in3,4 jako target
                 
-                targetAddress == Board[targetX][targetY];
+                int targetAddress = Board[targetX][targetY];
                 
-                if (address->Name == "Field")
+                if (targetAddress->Name == "Field")
                 {
-                    if (address->canMove(positionX, positionY, targetX, targetY))
+                    if (targetAddress->canMove(positionX, positionY, targetX, targetY))
                     {
-                        address->move(positionX, positionY, targetX, targetY));
+                        targetAddress->move(positionX, positionY, targetX, targetY));
                         round++;
                     }
                     
                 }
-                else if (address->Name == "Obstacle")
+                else if (targetAddress->Name == "Obstacle")
                     error("interact with Obstacle");
                 else
                 {
                     //sprawdz czy to twój pionek
-                    if(!checkOwner(player, targetX, targetY))
+                    if(!isYour(player, targetX, targetY)) //sprawdz jaki pionek tam stoi
                     {
                         if(address->canAttak(int positionX, int positionY, int targetX, int targetY))
                         {
+                            targetAddress->setHP(-address->dmg); //setHp to znaczy zadaj dmg
                             
-                            targetAddress->setHP(-address->dmg);
-                            if(targetAddress->HP <= 0)
-                            {
-                                targetAddress->Name = "Field";
-                            }
                             round++;
                         }
                         else error("nie możesz go zaatakować");
                         
                     }
-                    else error("To twój pionek");
+                    else error("To twój pionek"); // atakujesz swój pionek łosiu
                 }
                 
                 
