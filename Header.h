@@ -16,7 +16,6 @@ const int boardSize = 8;
 inline void error(const std::string message);
 int toint(char c);
 int reverse(char a);
-constexpr unsigned int str2int(const char* str, int h = 0);
 
 
 class GameObject{
@@ -39,11 +38,11 @@ public:
     const int dmg;        
 	Figure(std::string name, bool own, int HP, int dmg, int cordX, int cordY);
 	Figure() = default;
-    virtual bool isYour(bool player, int x, int y);
+    virtual bool isYour(bool player);
     void reveal();    
     void setHP(int hp);  // Zmienia HP obiektu o hp        
     bool canMove(int targetX, int targetY);
-    virtual bool canAttak(int positionX, int positionY, int targetX, int targetY);   
+    virtual bool canAttak(int targetX, int targetY);   
 };
 
 //dziedziczenie po klasie Figure

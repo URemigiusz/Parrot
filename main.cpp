@@ -9,7 +9,8 @@ int main()
 {
     
         
-{   
+	Board board(10, 10);
+
     //openFile();
 	/*trzeba zrobić aby z pliku wczytało nam
 	wymiar planszy
@@ -41,7 +42,7 @@ int main()
 		else if (input.size() == 5) {
 			positionY = toint(input[0]);
 			positionX = reverse(input[1]);
-			targetY = toint
+			//targetY = toint
 		}
 		else if (input.size() == 6) {
 			positionY = toint(input[0]);
@@ -60,33 +61,32 @@ int main()
 		}
 		else error("zly input dales!!");
 
-		GameObject* address = Board[positionX][positionY]; 
-        if (input.size() == 2 || input.size() == 3)
-        {
-			GameObject* address = [positionY][positionX];
+//===========================================================================//
 
-        }
-        else if (input.size() == 5|| input.size() == 6|| input.size() == 7)
+		Figure* address = (Figure*)board[positionX][positionY];
+		Figure* targetAddress = (Figure*)board[targetX][targetY];
+       
+        if (input.size() == 5 || input.size() == 6 || input.size() == 7)
         {
 			if (targetAddress->Name == "Field")
 			{
-				if (targetAddress->canMove(targetX, targetY))
+				if (address->canMove(targetX, targetY))
 				{
-					targetAddress->move(positionX, positionY, targetX, targetY);
+					board->swap(positionX, positionY, targetX, targetY);
 					round++;
 				}
 				else error("Nie możesz wykonać takiego ruchu");
 			}
 			else if (targetAddress->Name == "Obstacle") error("walisz w przeszkode");           
-            else if(isYour(player, positionX, positionY))  //Sprawdź czy ruszasz swój pionek
+            else if(address->isYour(player))  //Sprawdź czy ruszasz swój pionek
             {               
-                GameObject* targetAddress = Board[targetX][targetY];               
+                GameObject* targetAddress = board[targetX][targetY];               
                 else
                 {
                     //sprawdz czy to twój pionek
-                    if(!isYour(player, targetX, targetY)) //sprawdz jaki pionek tam stoi
+                    if(!address->isYour(player)) //sprawdz jaki pionek tam stoi
                     {
-                        if(address->canAttak(int positionX, int positionY, int targetX, int targetY))
+						if(address->canAttak(int targetX, int targetY))
                         {
                             targetAddress->setHP(-address->dmg); //setHp to znaczy zadaj dmg
                             

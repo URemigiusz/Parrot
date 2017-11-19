@@ -19,14 +19,6 @@ inline int toint(char c)
     }
 }
 
-/*constexpr unsigned int str2int(const char* str, int h = 0)
-{
-    return !str[h] ? 5381 : (str2int(str, h+1) * 33) ^ str[h];
-}*/
-
-
-
-
 
 GameObject::GameObject(std::string name)
     :Name(name)
@@ -94,9 +86,9 @@ bool Figure::canMove(int targetX, int targetY)
 }
 
 
-bool Figure::isYour(bool player, int x, int y){
-    return Board[x][y]->owner == player;
-    
+bool Figure::isYour(bool player)
+{
+    return owner == player;    
 }
 
 /*bool checkInput(std::string input){
