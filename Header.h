@@ -53,14 +53,14 @@ public:
     bool canAttak(int positionX, int positionY, int targetX, int targetY);
 };
 
-class Horseman : public Figure  //ko�
+class Horseman : public Figure  //koń
 {
 public:
 	Horseman(int HP, int dmg, std::string name);
     bool canAttak(int positionX, int positionY, int targetX, int targetY);
 };
 
-class Tower : public Figure //wie�a
+class Tower : public Figure //wieża
 {
 public:
 	Tower(int HP, int dmg, std::string name);
@@ -74,14 +74,14 @@ public:
     bool canAttak(int positionX, int positionY, int targetX, int targetY);
 };
 
-class Queen : public Figure  //kr�lowa
+class Queen : public Figure  //królowa
 {
 public:
 	Queen(int HP, int dmg, std::string name);
     bool canAttak(int positionX, int positionY, int targetX, int targetY);
 };
 
-class King : public Figure  //kr�l
+class King : public Figure  //król
 {
 public:
 	King(int HP, int dmg, std::string name);
