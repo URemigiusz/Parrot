@@ -21,7 +21,7 @@ int main()
     do{
                 
 
-        player = round % 2;                                       
+        player = static_cast<bool>(round % 2);
         std::cout << "tura gracza " << player << std::endl;       
         std::string input;
         std::cin >> input;
