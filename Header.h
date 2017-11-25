@@ -42,7 +42,7 @@ public:
     void reveal();    
     void setHP(int hp);  // Zmienia HP obiektu o hp        
     bool canMove(int targetX, int targetY);
-    virtual bool canAttak(int targetX, int targetY);   
+    virtual bool canAttak(int targetX, int targetY)= 0;
 };
 
 //dziedziczenie po klasie Figure
