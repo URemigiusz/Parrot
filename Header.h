@@ -31,7 +31,7 @@ public:
 
 class Figure : public GameObject{
 private:
-    const int HP;
+    int HP;
     double movement;	    
 public:
     bool owner;        
