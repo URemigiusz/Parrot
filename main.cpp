@@ -86,7 +86,7 @@ int main()
                     //sprawdz czy to twój pionek
                     if(!address->isYour(player)) //sprawdz jaki pionek tam stoi
                     {
-						if(address->canAttak(int targetX, int targetY))
+						if(address->canAttak(targetX, targetY))
                         {
                             targetAddress->setHP(-address->dmg); //setHp to znaczy zadaj dmg
                             
