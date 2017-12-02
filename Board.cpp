@@ -118,6 +118,3 @@ void Board::add_rand_obstacles(int x, int y, int obsChance)
         }
     }
 }
-
-
-

@@ -76,3 +76,4 @@ bool King::canAttak(int positionX, int positionY, int targetX, int targetY)
 
     return positionX <= 1 && positionY <= 1;
 }
+
