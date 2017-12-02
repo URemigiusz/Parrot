@@ -1,8 +1,8 @@
 #include "Header.h"
 #include "Board.h"
 
-static bool win          = 0;
-static bool player       = 0;
+static bool win          = false;
+static bool player       = false;
 static int roundNumber         = 1;
 
 int main()
@@ -73,7 +73,7 @@ int main()
 /*
 		Figure* address = (Figure*)board[positionX][positionY];
 		Figure* targetAddress = (Figure*)board[targetX][targetY];
-       
+
         if (input.size() == 5 || input.size() == 6 || input.size() == 7)
         {
 			if (targetAddress->Name == "Field")
@@ -88,7 +88,7 @@ int main()
 			else if (targetAddress->Name == "Obstacle") error("walisz w przeszkode");           
             else if(address->isYour(player))  //Sprawdź czy ruszasz swój pionek
             {               
-                GameObject* targetAddress = board[targetX][targetY];               
+                GameObject* targetAddress = board[targetX][targetY];
                     //sprawdz czy to twój pionek
                     if(!address->isYour(player)) //sprawdz jaki pionek tam stoi
                     {
