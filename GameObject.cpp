@@ -5,7 +5,7 @@ inline void error(const std::string message)
     std::cout << "RUN_TIME_ERROR : " << message << std::endl;
 }
 
-int toint(char c, unsigned size){
+int tont(char c, unsigned size){
     
     if ('a' <= c && c <= 'a' + size)
     {

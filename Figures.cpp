@@ -1,6 +1,5 @@
 #include "Header.h"
 
-
 Pawn::Pawn(int HP, int dmg, std::string name)
         :figureHP(HP), figureDMG(dmg), figureName(name) {
     HP = 5;
@@ -46,6 +45,7 @@ bool Pawn::canAttak(int targetX, int targetY)
     else if(targetX == cordX - 1 & targetY == cordY - 1) return(1);
     else return(0);
 
+
 }
 
 bool  Horseman::canAttak(int targetX, int targetY, Board& Board )
@@ -57,6 +57,8 @@ bool  Horseman::canAttak(int targetX, int targetY, Board& Board )
             else return(1);
         }
     }
+    return (positionX == 2 && positionY == 0) || (positionX == 0 && positionY == 2);
+}
 
 
     else if(cordY == targetY  - 1 && wartoscBezwzgledna(targetX - cordX) = 1){
