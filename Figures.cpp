@@ -41,56 +41,50 @@ bool Pawn::canAttack(int targetX, int targetY)
 {
     int x = cordX;
     int y = cordY;
-    if(targetX == x + 1 && targetY == y + 1 ) return(1);
-    else if(targetX == x + 1 && targetY == y - 1) return(1);
-    else if(targetX == x - 1 && targetY == y + 1) return(1);
-    else if(targetX == x - 1 && targetY == y - 1) return(1);
-    else return(0);
+    return targetX == x + 1 && targetY == y + 1 ||
+           targetX == x + 1 && targetY == y - 1 ||
+           targetX == x - 1 && targetY == y + 1 ||
+           targetX == x - 1 && targetY == y - 1;
 }
 
 bool  Horseman::canAttack(int targetX, int targetY)
 {
     int x = cordX;
     int y = cordY;
-    if(y == targetY + 1 && wartoscBezwzgledna(targetX - x) == 1)         return 1;
-    else if(y == targetY  - 1 && wartoscBezwzgledna(targetX - x) == 1)   return 1;
-    else if(y == targetY && wartoscBezwzgledna(targetX - x) == 1)        return 1;
-    else if(x == targetX && wartoscBezwzgledna(targetY - y) == 1)        return 1;
-    else return 0;
+    return y == targetY + 1 && wartoscBezwzgledna(targetX - x) == 1 ||
+           y == targetY - 1 && wartoscBezwzgledna(targetX - x) == 1 ||
+           y == targetY && wartoscBezwzgledna(targetX - x) == 1 ||
+           x == targetX && wartoscBezwzgledna(targetY - y) == 1;
 }
 
 bool Tower::canAttack(int targetX, int targetY)
 {
     int x = cordX;
     int y = cordY;
-    if(targetX == x && wartoscBezwzgledna (y - targetY) <= 3)           return 1;
-    else if(targetY == y && wartoscBezwzgledna (x - targetX) <= 3)      return 1;
-    else return 0;
+    return targetX == x && wartoscBezwzgledna (y - targetY) <= 3 ||
+           targetY == y && wartoscBezwzgledna (x - targetX) <= 3;
 }
 
 bool Bishop::canAttack(int targetX, int targetY)
 {
     int x = wartoscBezwzgledna(cordX - targetX);
     int y = wartoscBezwzgledna(cordY - targetY);
-    if (x == y && x <=3 && y <=3) return 1;
-    else return 0;
+    return x == y && x <= 3 && y <= 3;
 }
 
 bool Queen::canAttack(int targetX, int targetY)
 {
     int x = wartoscBezwzgledna (cordX - targetX);
     int y = wartoscBezwzgledna (cordY - targetY);
-    if (x == y && x <= 3) return 1;
-    else return 0;
+    return x == y && x <= 3;
 }
 
 bool King::canAttack(int targetX, int targetY)
 {
     int x = cordX;
     int y = cordY;
-    if(targetX == x + 1 && targetY == y + 1 ) return(1);
-    else if(targetX == x + 1 && targetY == y - 1) return(1);
-    else if(targetX == x - 1 && targetY == y + 1) return(1);
-    else if(targetX == x - 1 && targetY == y - 1) return(1);
-    else return(0);
+    return targetX == x + 1 && targetY == y + 1 ||
+           targetX == x + 1 && targetY == y - 1 ||
+           targetX == x - 1 && targetY == y + 1 ||
+           targetX == x - 1 && targetY == y - 1;
 }
