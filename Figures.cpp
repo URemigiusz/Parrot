@@ -1,4 +1,5 @@
 #include "Header.h"
+#include "Board.h"
 
 Pawn::Pawn(int HP, int dmg, std::string name)
         :figureHP(HP), figureDMG(dmg), figureName(name) {
@@ -28,7 +29,7 @@ Queen::Queen(int HP, int dmg, std::string name)
         :figureHP(HP), figureDMG(dmg), figureName(name) {
     HP = 12;
     const dmg = 3;
-    const name	="Hetman"
+    const name	="Hetman";
 }
 King::King(int HP, int dmg, std::string name)
         :figureHP(HP), figureDMG(dmg), figureName(name) {
@@ -37,107 +38,60 @@ King::King(int HP, int dmg, std::string name)
     const name = "Krol";
 }
 
-bool Pawn::canAttak(int targetX, int targetY)
+bool Pawn::canAttack(int targetX, int targetY)
 {
-    if(targetX == cordX + 1 & targetY == cordY + 1) return(1);
-    else if(targetX == cordX + 1 & targetY == cordY - 1) return(1);
-    else if(targetX == cordX - 1 & targetY == cordY + 1) return(1);
-    else if(targetX == cordX - 1 & targetY == cordY - 1) return(1);
-    else return(0);
-
-
-}
-
-bool  Horseman::canAttak(int targetX, int targetY, Board& Board )
-{
-
-    if(cordY == targetY + 1 && wartoscBezwzgledna(targetX - cordX) = 1){
-        for(int i = cordX - 1; i <= targetX; i++){
-            if(Board[cordY][i]->Name == "Obstacle") return(0);
-            else return(1);
-        }
-    }
-    return (positionX == 2 && positionY == 0) || (positionX == 0 && positionY == 2);
-}
-
-
-    else if(cordY == targetY  - 1 && wartoscBezwzgledna(targetX - cordX) = 1){
-        for(int i = cordX - 1; i <= targetX; i++){
-            if(Board[cordY][i]->Name == "Obstacle") return(0);
-            else return(1);
-        }
-    }
-
-    else if(cordY == targetY && wartoscBezwzgledna(targetX - cordX) = 1){
-        return(1);
-    }else return(0);
-
-
-
-
-}
-
-bool Tower::canAttak(int targetX, int targetY)
-{
-    if(targetX == cordX && (cordY - targetY) <= 3){ //Y rośnie czyli ->
-        for(int i = cordY; i <= targetY; i++){
-            if(Board[cordX][i]->Name == "Obstacle") return(0);
-            else return(1);
-        }
-    }
-    else if(targetX == cordX  && (cordY - targetY) <= -3){ //Y rośnie czyli <-
-        for(int i = cordY; i >= targetY; i--){
-            if(Board[cordX][i]->Name == "Obstacle") return(0);
-            else return(1);
-        }
-    }
-    else if(targetY == cordY && cordX - targetX <= 3){ //Y rośnie czyli ^
-        for(int i = cordY; i <= targetY; i++){
-            if(Board[i][cordY]->Name == "Obstacle") return(0);
-            else return(1);
-        }
-    }
-    else if(targetY == cordY && cordX - targetX <= -3){ //Y rośnie czyli v
-        for(int i = cordY; i >= targetY; i--){
-            if(Board[i][cordY]->Name == "Obstacle") return(0);
-            else return(1);
-        }
-    }
+    int x = cordX;
+    int y = cordY;
+    if(targetX == x + 1 && targetY == y + 1 ) return(1);
+    else if(targetX == x + 1 && targetY == y - 1) return(1);
+    else if(targetX == x - 1 && targetY == y + 1) return(1);
+    else if(targetX == x - 1 && targetY == y - 1) return(1);
     else return(0);
 }
 
-bool Bishop::canAttak(int targetX, int targetY)
+bool  Horseman::canAttack(int targetX, int targetY)
 {
-    cordX = wartoscBezwzgledna(cordX - targetX);
-    cordY = wartoscBezwzgledna(cordY - targetY);
-
-    if (cordX == cordY && cordX <=3)
-        return 1;
-    else
-        return 0;
-
-
+    int x = cordX;
+    int y = cordY;
+    if(y == targetY + 1 && wartoscBezwzgledna(targetX - x) == 1)         return 1;
+    else if(y == targetY  - 1 && wartoscBezwzgledna(targetX - x) == 1)   return 1;
+    else if(y == targetY && wartoscBezwzgledna(targetX - x) == 1)        return 1;
+    else if(x == targetX && wartoscBezwzgledna(targetY - y) == 1)        return 1;
+    else return 0;
 }
 
-bool Queen::canAttak(int targetX, int targetY) {
-    cordX = wartoscBezwzgledna (cordX - targetX);
-    cordY = wartoscBezwzgledna (cordY - targetY);
-
-    if (cordX == cordY && cordX <= 3)
-        return 1;
-    else
-        return 0;
+bool Tower::canAttack(int targetX, int targetY)
+{
+    int x = cordX;
+    int y = cordY;
+    if(targetX == x && wartoscBezwzgledna (y - targetY) <= 3)           return 1;
+    else if(targetY == y && wartoscBezwzgledna (x - targetX) <= 3)      return 1;
+    else return 0;
 }
 
-bool King::canAttak(int targetX, int targetY)
+bool Bishop::canAttack(int targetX, int targetY)
 {
-    cordX = cordX - targetX;
-    if (cordX < 0) targetX *= -1;
-    cordY = cordY - targetY;
-    if (cordY < 0) cordY *= -1;
+    int x = wartoscBezwzgledna(cordX - targetX);
+    int y = wartoscBezwzgledna(cordY - targetY);
+    if (x == y && x <=3 && y <=3) return 1;
+    else return 0;
+}
 
-    if (cordX <= 1 && cordY <= 1)
-        return 1;
-    else
-        return 0;
+bool Queen::canAttack(int targetX, int targetY)
+{
+    int x = wartoscBezwzgledna (cordX - targetX);
+    int y = wartoscBezwzgledna (cordY - targetY);
+    if (x == y && x <= 3) return 1;
+    else return 0;
+}
+
+bool King::canAttack(int targetX, int targetY)
+{
+    int x = cordX;
+    int y = cordY;
+    if(targetX == x + 1 && targetY == y + 1 ) return(1);
+    else if(targetX == x + 1 && targetY == y - 1) return(1);
+    else if(targetX == x - 1 && targetY == y + 1) return(1);
+    else if(targetX == x - 1 && targetY == y - 1) return(1);
+    else return(0);
 }
