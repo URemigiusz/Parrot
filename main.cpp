@@ -3,33 +3,30 @@
 
 static bool win          = 0;
 static bool player       = 0;
-static int round         = 1;
+static int roundNumber         = 1;
 
 int main()
 {
-    
-        
-	Board board(10, 10);
-
-    //openFile();
+	//openFile();
 	/*trzeba zrobić aby z pliku wczytało nam
 	wymiar planszy
 	współżędne figur
 	współżędne obiektów
 	wszystkie zasoby figur
 	*/
-    do{
-                
+	Board board(10, 10); //zmienić na zczytanie z pliku rozmiaru z planszy
 
-        player = round % 2;                                       
-        std::cout << "tura gracza " << player << std::endl;       
-        std::string input;
-        std::cin >> input;
-		int positionX,	 //cyfry
-			positionY,   //literki
-			targetX,	//cyfry
-			targetY;	//literki
-		
+	do {
+		player = roundNumber % 2;
+		std::cout << "tura gracza " << player << std::endl;
+		std::string input;
+		std::cin >> input;
+		int positionX;	 //cyfry
+		int	positionY;   //literki
+		int	targetX;	//cyfry
+		int	targetY;	//literki
+
+
 		if (input.size() == 2) {
 			positionY = toint(input[0]);
 			positionX = reverse(input[1]);  //prosze napisać reverse now!!!
@@ -64,12 +61,16 @@ int main()
 			targetY = toint(input[4]);
 			targetX = reverse(input[5] * 10 + input[6]);
 		}
-		else error("zly input dales!!");
+		else error("Za duży input!");
 
+
+	} while (!win);
+	std::cin.get();
+}
 		//positionX, positionY, targetX, targetY maja w sobie dobre wartosci
 
 //===========================================================================//
-
+/*
 		Figure* address = (Figure*)board[positionX][positionY];
 		Figure* targetAddress = (Figure*)board[targetX][targetY];
        
@@ -79,8 +80,8 @@ int main()
 			{
 				if (address->canMove(targetX, targetY))
 				{
-					board->swap(positionX, positionY, targetX, targetY);
-					round++;
+					board.swap(positionX, positionY, targetX, targetY);
+					roundNumber++;
 				}
 				else error("Nie możesz wykonać takiego ruchu");
 			}
@@ -88,24 +89,17 @@ int main()
             else if(address->isYour(player))  //Sprawdź czy ruszasz swój pionek
             {               
                 GameObject* targetAddress = board[targetX][targetY];               
-                else
-                {
                     //sprawdz czy to twój pionek
                     if(!address->isYour(player)) //sprawdz jaki pionek tam stoi
                     {
-						if(address->canAttak(int targetX, int targetY))
-                        {
-                            targetAddress->setHP(-address->dmg); //setHp to znaczy zadaj dmg
-                            
-                            round++;
-                        }
-                        else error("nie możesz go zaatakować");
-                        
+						if (address->canAttak(int targetX, int targetY))
+						{
+							targetAddress->setHP(-address->dmg); //setHp to znaczy zadaj dmg
+							round++;
+						}
+                        else error("nie możesz go zaatakować");                       
                     }
-                    else error("To twój pionek"); // atakujesz swój pionek łosiu
-                }
-                
-                
+                    else error("To twój pionek"); // atakujesz swój pionek łosiu               
             }
             else error("To nie twoja figura!");
         }

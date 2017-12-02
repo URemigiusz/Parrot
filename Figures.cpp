@@ -1,34 +1,22 @@
 #include "Header.h"
 
-Pawn::Pawn(int HP, int dmg, std::string name) {
-	HP = 5;
-	const dmg = 2;
-	const name = "Pionek";
+Pawn::Pawn(int HP, int dmg, std::string name) 
+	:figureHP(HP), figureDMG(dmg), figureName(name) {
 }
-Horseman::Horseman(int HP, int dmg, std::string name) {
-	HP = 3;
-	const dmg = 5;
-	const name = "Kon";
+Horseman::Horseman(int HP, int dmg, std::string name) 
+	:figureHP(HP), figureDMG(dmg), figureName(name){
 }
-Bishop::Bishop(int HP, int dmg, std::string name) {
-	HP = 7;
-	const dmg = 3;
-	const name = "Goniec";
+Bishop::Bishop(int HP, int dmg, std::string name) 
+	:figureHP(HP), figureDMG(dmg), figureName(name) {
 }
-Tower::Tower(int HP, int dmg, std::string name) {
-	HP = 8;
-	const dmg = 2;
-	const name = "Wieza";
+Tower::Tower(int HP, int dmg, std::string name)
+	: figureHP(HP), figureDMG(dmg), figureName(name) {
 }
-Queen::Queen(int HP, int dmg, std::string name) {
-	HP = 12;
-	const dmg = 3;
-	const name	="Hetman"
+Queen::Queen(int HP, int dmg, std::string name) 
+	: figureHP(HP), figureDMG(dmg), figureName(name) {
 }
-King::King(int HP, int dmg, std::string name) {
-	HP = 20;
-	const dmg = 2;
-	const name = "Krol";
+King::King(int HP, int dmg, std::string name) 
+	: figureHP(HP), figureDMG(dmg), figureName(name) {
 }
 
 bool Pawn::canAttak(int positionX, int positionY, int targetX, int targetY)
