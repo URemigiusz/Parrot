@@ -1,5 +1,4 @@
 #include "Header.h"
-#include "Board.h"
 
 Pawn::Pawn(int HP, int dmg, std::string name)
         :figureHP(HP), figureDMG(dmg), figureName(name) {
