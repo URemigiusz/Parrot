@@ -1,4 +1,5 @@
 #include "Header.h"
+#include "Board.h"
 
 Pawn::Pawn(int HP, int dmg, std::string name)
         :figureHP(HP), figureDMG(dmg), figureName(name) {
@@ -88,3 +89,4 @@ bool King::canAttack(int targetX, int targetY)
            targetX == x - 1 && targetY == y + 1 ||
            targetX == x - 1 && targetY == y - 1;
 }
+

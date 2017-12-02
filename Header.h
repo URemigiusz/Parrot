@@ -8,14 +8,10 @@
 #include <math.h>
 #include <fstream>
 
-const int boardX = 8;
-const int boardY = 8;
-const int boardSize = 8;
-
 
 inline void error(const std::string message);
 int toint(char c);
-int reverse(char a);
+int reverse(unsigned x);
 int wartoscBezwzgledna(int x);
 
 class GameObject{
@@ -25,7 +21,7 @@ public:
     std::string Name;        
     GameObject(std::string name = "uninitialized");   
     virtual void reveal();
-	static int cordX;
+	int cordX;
 	int cordY;
 };
 
@@ -52,6 +48,7 @@ class Pawn : public Figure  //pionek
 public:
 	Pawn(int HP, int dmg, std::string name);
     bool canAttack(int targetX, int targetY);
+    bool canMove(int targetX, int targetY);
 };
 
 class Horseman : public Figure  //koń
@@ -59,6 +56,7 @@ class Horseman : public Figure  //koń
 public:
 	Horseman(int HP, int dmg, std::string name);
     bool canAttack(int targetX, int targetY);
+    bool canMove(int targetX, int targetY);
 };
 
 class Tower : public Figure //wieża
@@ -66,6 +64,7 @@ class Tower : public Figure //wieża
 public:
 	Tower(int HP, int dmg, std::string name);
     bool canAttack(int targetX, int targetY);
+    bool canMove(int targetX, int targetY);
 };
 
 class Bishop : public Figure  //goniec
@@ -73,6 +72,7 @@ class Bishop : public Figure  //goniec
 public:
 	Bishop(int HP, int dmg, std::string name);
     bool canAttack(int targetX, int targetY);
+    bool canMove(int targetX, int targetY);
 };
 
 class Queen : public Figure  //królowa
@@ -80,6 +80,7 @@ class Queen : public Figure  //królowa
 public:
 	Queen(int HP, int dmg, std::string name);
     bool canAttack(int targetX, int targetY);
+    bool canMove(int targetX, int targetY);
 };
 
 class King : public Figure  //król
@@ -87,5 +88,6 @@ class King : public Figure  //król
 public:
 	King(int HP, int dmg, std::string name);
     bool canAttack(int targetX, int targetY);
+    bool canMove(int targetX, int targetY);
 };
 
