@@ -70,11 +70,8 @@ void Figure::setHP(int hp)
     double Y = pow((cordY - targetY), 2);
     
     required = sqrt(X + Y);
-    
-    if (required <= movement)
-        return true;
-    else
-        return false;
+
+    return required <= movement;
 }*/
 
 
