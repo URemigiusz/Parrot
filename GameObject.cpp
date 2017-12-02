@@ -5,10 +5,9 @@ inline void error(const std::string message)
     std::cout << "RUN_TIME_ERROR : " << message << std::endl;
 }
 
-inline int toint(char c)
-{
+int toint(char c, unsigned size){
     
-    if ('a' <= c && c <= 'h')
+    if ('a' <= c && c <= 'a' + size)
     {
         return c - 'a';
     }
@@ -19,6 +18,13 @@ inline int toint(char c)
     }
 }
 
+int reverse(unsigned x, unsigned size)
+{
+    if(x > size)
+        error("reverse error");
+
+    return size - x + 1;
+}
 
 GameObject::GameObject(std::string name)
     :Name(name)
@@ -70,11 +76,8 @@ void Figure::setHP(int hp)
     double Y = pow((cordY - targetY), 2);
     
     required = sqrt(X + Y);
-    
-    if (required <= movement)
-        return true;
-    else
-        return false;
+
+    return required <= movement;
 }*/
 
 

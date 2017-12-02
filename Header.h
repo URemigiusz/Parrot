@@ -31,7 +31,7 @@ public:
 
 class Figure : public GameObject{
 private:
-    double movement;	    
+    double movement;
 public:
 	bool owner;
 	int figureHP;        
@@ -43,7 +43,7 @@ public:
     void reveal();    
     void setHP(int hp);  // Zmienia HP obiektu o hp        
     //bool canMove(int targetX, int targetY);
-    virtual bool canAttak(int targetX, int targetY);   
+    virtual bool canAttak(int targetX, int targetY)= 0;
 };
 
 //dziedziczenie po klasie Figure
@@ -51,36 +51,41 @@ class Pawn : public Figure  //pionek
 {
 public:
 	Pawn(int HP, int dmg, std::string name);
-    bool canAttak(int positionX, int positionY, int targetX, int targetY);
+    bool canAttak(int targetX, int targetY);
 };
 
-class Horseman : public Figure  //ko�
+class Horseman : public Figure  //koń
 {
 public:
-    bool canAttak(int positionX, int positionY, int targetX, int targetY);
+	Horseman(int HP, int dmg, std::string name);
+    bool canAttak(int targetX, int targetY);
 };
 
-class Tower : public Figure //wie�a
+class Tower : public Figure //wieża
 {
 public:
-    bool canAttak(int positionX, int positionY, int targetX, int targetY);
+	Tower(int HP, int dmg, std::string name);
+    bool canAttak(int targetX, int targetY);
 };
 
 class Bishop : public Figure  //goniec
 {
 public:
-    bool canAttak(int positionX, int positionY, int targetX, int targetY);
+	Bishop(int HP, int dmg, std::string name);
+    bool canAttak(int targetX, int targetY);
 };
 
-class Queen : public Figure  //kr�lowa
+class Queen : public Figure  //królowa
 {
 public:
-    bool canAttak(int positionX, int positionY, int targetX, int targetY);
+	Queen(int HP, int dmg, std::string name);
+    bool canAttak(int targetX, int targetY);
 };
 
-class King : public Figure  //kr�l
+class King : public Figure  //król
 {
 public:
-    bool canAttak(int positionX, int positionY, int targetX, int targetY);
+	King(int HP, int dmg, std::string name);
+    bool canAttak(int targetX, int targetY);
 };
 
