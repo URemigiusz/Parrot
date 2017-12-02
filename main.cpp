@@ -26,18 +26,7 @@ int main()
 		int	targetX;	//cyfry
 		int	targetY;	//literki
 
-<<<<<<< HEAD
-=======
-        player = round % 2;                                       
-        std::cout << "tura gracza " << player << std::endl;       
-        std::string input;
-        std::cin >> input;
-		int positionX,	 //cyfry
-			positionY,   //literki
-			targetX,	//cyfry
-			targetY;	//literki
-		
->>>>>>> b423332460d0a1142ff238f18a297087dacd8af4
+
 		if (input.size() == 2) {
 			positionY = toint(input[0]);
 			positionX = reverse(input[1]);  //prosze napisać reverse now!!!
@@ -45,10 +34,6 @@ int main()
 		else if (input.size() == 3) {
 			positionY = toint(input[0]);
 			positionX = reverse(input[1] * 10 + input[2]);
-<<<<<<< HEAD
-
-=======
->>>>>>> b423332460d0a1142ff238f18a297087dacd8af4
 		}
 
 		else if (input.size() == 5) {
@@ -78,14 +63,12 @@ int main()
 		}
 		else error("Za duży input!");
 
-<<<<<<< HEAD
+
 	} while (!win);
 	std::cin.get();
 }
-=======
 		//positionX, positionY, targetX, targetY maja w sobie dobre wartosci
 
->>>>>>> b423332460d0a1142ff238f18a297087dacd8af4
 //===========================================================================//
 /*
 		Figure* address = (Figure*)board[positionX][positionY];
