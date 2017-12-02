@@ -36,7 +36,7 @@ public:
 	bool owner;
 	int figureHP;        
     int figureDMG; 
-	int figureName;
+	std::string figureName;
 	Figure(std::string name, bool own, int HP, int dmg, int cordX, int cordY);
 	Figure() = default;
     virtual bool isYour(bool player);
