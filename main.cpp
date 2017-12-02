@@ -27,8 +27,8 @@ int main()
         std::cin >> input;
 		int positionX,	 //cyfry
 			positionY,   //literki
-			targetX,
-			targetY;
+			targetX,	//cyfry
+			targetY;	//literki
 		
 		if (input.size() == 2) {
 			positionY = toint(input[0]);
@@ -37,29 +37,36 @@ int main()
 		else if (input.size() == 3) {
 			positionY = toint(input[0]);
 			positionX = reverse(input[1] * 10 + input[2]);
-			
 		}
+
 		else if (input.size() == 5) {
 			positionY = toint(input[0]);
 			positionX = reverse(input[1]);
-			//targetY = toint
+			targetY = toint(input[3]);
+			targetX = reverse(input[4]);
 		}
 		else if (input.size() == 6) {
 			positionY = toint(input[0]);
-			if (input[3] == ' ') {
-				positionY = toint(input[0]);
+			if (input[2] == ' ') {
 				positionX = reverse(input[1]);
+				targetY = toint(input[3]);
+				targetX = reverse(input[4] * 10 + input[5]);
 			}
 			else {
-				positionY = toint(input[0]);
 				positionX = reverse(input[1] * 10 + input[2]);
+				targetY = toint(input[4]);
+				targetX = reverse(input[5]);
 			}
 		}
 		else if (input.size() == 7) {
 			positionY = toint(input[0]);
 			positionX = reverse(input[1] * 10 + input[2]);
+			targetY = toint(input[4]);
+			targetX = reverse(input[5] * 10 + input[6]);
 		}
 		else error("zly input dales!!");
+
+		//positionX, positionY, targetX, targetY maja w sobie dobre wartosci
 
 //===========================================================================//
 
