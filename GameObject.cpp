@@ -1,13 +1,14 @@
 #include "Header.h"
+#include "Board.h"
 
 inline void error(const std::string message)
 {
     std::cout << "RUN_TIME_ERROR : " << message << std::endl;
 }
 
-int tont(char c, unsigned size){
+int toint(char c){
     
-    if ('a' <= c && c <= 'a' + size)
+    if ('a' <= c && c <= 'a' + board.getX())
     {
         return c - 'a';
     }
@@ -18,12 +19,12 @@ int tont(char c, unsigned size){
     }
 }
 
-int reverse(unsigned x, unsigned size)
+int reverse(unsigned x)
 {
-    if(x > size)
+    if(x > board.getY())
         error("reverse error");
 
-    return size - x + 1;
+    return board.getY() - x + 1;
 }
 
 GameObject::GameObject(std::string name)

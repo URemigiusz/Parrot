@@ -3,7 +3,7 @@
 
 static bool win          = false;
 static bool player       = false;
-static int roundNumber         = 1;
+static int roundNumber   = 1;
 
 int main()
 {

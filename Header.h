@@ -8,14 +8,10 @@
 #include <math.h>
 #include <fstream>
 
-const int boardX = 8;
-const int boardY = 8;
-const int boardSize = 8;
-
 
 inline void error(const std::string message);
-int toint(char c, unsigned size);
-int reverse(unsigned x, unsigned size);
+int toint(char c);
+int reverse(unsigned x);
 
 
 class GameObject{

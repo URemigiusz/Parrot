@@ -1,4 +1,5 @@
 #pragma once
+#include "Header.h"
 
 using GameObjectPtr = GameObject*;
 
@@ -26,6 +27,7 @@ private:
     Line* Rows;
 public:
     Board(unsigned x, unsigned y);
+    Board() = default;
     ~Board();
     
     Line& operator[](unsigned index);
@@ -41,4 +43,5 @@ public:
     void GetBoard_from_File(std::string fileName);
 };
 
+Board board;
 
