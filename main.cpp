@@ -28,8 +28,8 @@ int main() {
                 positionY = toint(input[0]);
             }else error("Zbyt duzy input");
 
-            reveal(positionX, positionY);
 
+            board[positionX][positionY]->reveal();
         } while (!(input.size() == 1 && input[0] == 'x'));
 
         for (int i = 0; i < 1; i++) {     //to  sie robi raz ale mozna tu wracac :v
@@ -64,7 +64,7 @@ int main() {
                 continue;
             } else error("Zły input");
 
-            if(canMove(positionX, positionY, targetX, targetY){
+            if(canMove(targetX, targetY){
                 move(); // kiedys się zrobi
                 moved=1;
             }
