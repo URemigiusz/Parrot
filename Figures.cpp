@@ -36,7 +36,7 @@ bool  Horseman::canAttak(int positionX, int positionY, int targetX, int targetY)
     positionY = positionY - targetY;
     if (positionY < 0) positionY *= -1;
 
-    return positionX == 2 && positionY == 0 || positionX == 0 && positionY == 2;
+    return (positionX == 2 && positionY == 0) || (positionX == 0 && positionY == 2);
 }
 
 bool Tower::canAttak(int positionX, int positionY, int targetX, int targetY)

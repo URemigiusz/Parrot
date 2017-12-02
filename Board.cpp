@@ -11,7 +11,7 @@ Line::Line(unsigned size)
 
 GameObject* &Line::operator[](unsigned index)
 {
-    return Fields[index];
+    return Fields[reverse(index) - 1];
 }
 
 
@@ -75,10 +75,10 @@ void Board::swap(unsigned x1, unsigned y1, unsigned x2, unsigned y2)
 
 void Board::swap(std::string a, std::string b)
 {
-    int x1 = toint(a[0]);
-    int y1 = reverse(a[1]);
-    int x2 = toint(b[0]);
-    int y2 = reverse(b[1]);
+    int x1 = toint(a[0], X);
+    int y1 = reverse(a[1], Y);
+    int x2 = toint(b[0], X);
+    int y2 = reverse(b[1], Y);
     
     GameObject* buffer;
     buffer = Rows[x1][y1];
@@ -89,10 +89,10 @@ void Board::swap(std::string a, std::string b)
 
 void Board::swap(std::string a)
 {
-    int x1 = toint(a[0]);
-    int y1 = reverse(a[1]);
-    int x2 = toint(a[3]);
-    int y2 = reverse(a[4]);
+    int x1 = toint(a[0], X);
+    int y1 = reverse(a[1], Y);
+    int x2 = toint(a[3], X);
+    int y2 = reverse(a[4], Y);
     
     GameObject* buffer;
     buffer = Rows[x1][y1];
