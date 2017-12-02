@@ -1,34 +1,22 @@
 #include "Header.h"
 
-Pawn::Pawn(int HP, int dmg, std::string name) {
-	HP = 5;
-	const dmg = 2;
-	const name = "Pionek";
+Pawn::Pawn(int HP, int dmg, std::string name)
+	:figureHP(HP), figureDMG(dmg), figureName(name) {
 }
-Horseman::Horseman(int HP, int dmg, std::string name) {
-	HP = 3;
-	const dmg = 5;
-	const name = "Kon";
+Horseman::Horseman(int HP, int dmg, std::string name) 
+	:figureHP(HP), figureDMG(dmg), figureName(name){
 }
-Bishop::Bishop(int HP, int dmg, std::string name) {
-	HP = 7;
-	const dmg = 3;
-	const name = "Goniec";
+Bishop::Bishop(int HP, int dmg, std::string name) 
+	:figureHP(HP), figureDMG(dmg), figureName(name) {
 }
-Tower::Tower(int HP, int dmg, std::string name) {
-	HP = 8;
-	const dmg = 2;
-	const name = "Wieza";
+Tower::Tower(int HP, int dmg, std::string name)
+	: figureHP(HP), figureDMG(dmg), figureName(name) {
 }
-Queen::Queen(int HP, int dmg, std::string name) {
-	HP = 12;
-	const dmg = 3;
-	const name	="Hetman"
+Queen::Queen(int HP, int dmg, std::string name) 
+	: figureHP(HP), figureDMG(dmg), figureName(name) {
 }
-King::King(int HP, int dmg, std::string name) {
-	HP = 20;
-	const dmg = 2;
-	const name = "Krol";
+King::King(int HP, int dmg, std::string name) 
+	: figureHP(HP), figureDMG(dmg), figureName(name) {
 }
 
 bool Pawn::canAttak(int positionX, int positionY, int targetX, int targetY)
@@ -37,11 +25,8 @@ bool Pawn::canAttak(int positionX, int positionY, int targetX, int targetY)
     double Y = pow((positionY - targetY), 2);
     
     double required = sqrt(X + Y);
-    
-    if (required > 1 && required < 2)
-        return 1;
-    else
-        return 0;    
+
+    return required > 1 && required < 2;
 }
 
 bool  Horseman::canAttak(int positionX, int positionY, int targetX, int targetY)
@@ -50,24 +35,16 @@ bool  Horseman::canAttak(int positionX, int positionY, int targetX, int targetY)
     if (positionX < 0) targetX *= -1;
     positionY = positionY - targetY;
     if (positionY < 0) positionY *= -1;
-    
-    if (positionX == 2 && positionY == 0)
-        return 1;
-    else if (positionX == 0 && positionY == 2)
-        return 1;
-    else
-        return 0;   
+
+    return positionX == 2 && positionY == 0 || positionX == 0 && positionY == 2;
 }
 
 bool Tower::canAttak(int positionX, int positionY, int targetX, int targetY)
 {
     positionX = positionX - targetX;
     positionY = positionY - targetY;
-    
-    if (positionX == targetX || positionY == targetY)
-        return 1;
-    else
-        return 0;
+
+    return positionX == targetX || positionY == targetY;
     
 }
 
@@ -75,11 +52,8 @@ bool Bishop::canAttak(int positionX, int positionY, int targetX, int targetY)
 {
     positionX = positionX - targetX;
     positionY = positionY - targetY;
-    
-    if (positionX == targetX || positionY == targetY)
-        return 1;
-    else
-        return 0;
+
+    return positionX == targetX || positionY == targetY;
 }
 
 bool Queen::canAttak(int positionX, int positionY, int targetX, int targetY)
@@ -88,11 +62,8 @@ bool Queen::canAttak(int positionX, int positionY, int targetX, int targetY)
     if (positionX < 0) targetX *= -1;
     positionY = positionY - targetY;
     if (positionY < 0) positionY *= -1;
-    
-    if (positionX == positionY)
-        return 1;
-    else
-        return 0;
+
+    return positionX == positionY;
 }
 
 bool King::canAttak(int positionX, int positionY, int targetX, int targetY)
@@ -101,9 +72,6 @@ bool King::canAttak(int positionX, int positionY, int targetX, int targetY)
     if (positionX < 0) targetX *= -1;
     positionY = positionY - targetY;
     if (positionY < 0) positionY *= -1;
-    
-    if (positionX <= 1 && positionY <= 1)
-        return 1;
-    else
-        return 0;
+
+    return positionX <= 1 && positionY <= 1;
 }
