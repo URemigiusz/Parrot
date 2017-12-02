@@ -16,7 +16,7 @@ const int boardSize = 8;
 inline void error(const std::string message);
 int toint(char c);
 int reverse(char a);
-
+int wartoscBezwzgledna(int x);
 
 class GameObject{
 private:
@@ -54,13 +54,13 @@ public:
     bool canAttak(int positionX, int positionY, int targetX, int targetY);
 };
 
-class Horseman : public Figure  //koñ
+class Horseman : public Figure  //koï¿½
 {
 public:
     bool canAttak(int positionX, int positionY, int targetX, int targetY);
 };
 
-class Tower : public Figure //wie¿a
+class Tower : public Figure //wieï¿½a
 {
 public:
     bool canAttak(int positionX, int positionY, int targetX, int targetY);
@@ -72,13 +72,13 @@ public:
     bool canAttak(int positionX, int positionY, int targetX, int targetY);
 };
 
-class Queen : public Figure  //królowa
+class Queen : public Figure  //krï¿½lowa
 {
 public:
     bool canAttak(int positionX, int positionY, int targetX, int targetY);
 };
 
-class King : public Figure  //król
+class King : public Figure  //krï¿½l
 {
 public:
     bool canAttak(int positionX, int positionY, int targetX, int targetY);
