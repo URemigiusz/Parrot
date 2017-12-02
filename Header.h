@@ -31,17 +31,18 @@ public:
 
 class Figure : public GameObject{
 private:
-    int HP;
-    double movement;	    
+    double movement;
 public:
-    bool owner;        
-    const int dmg;        
+	bool owner;
+	int figureHP;        
+    int figureDMG; 
+	int figureName;
 	Figure(std::string name, bool own, int HP, int dmg, int cordX, int cordY);
 	Figure() = default;
     virtual bool isYour(bool player);
     void reveal();    
     void setHP(int hp);  // Zmienia HP obiektu o hp        
-    bool canMove(int targetX, int targetY);
+    //bool canMove(int targetX, int targetY);
     virtual bool canAttak(int targetX, int targetY)= 0;
 };
 

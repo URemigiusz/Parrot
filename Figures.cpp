@@ -1,34 +1,22 @@
 #include "Header.h"
 
-Pawn::Pawn(int HP, int dmg, std::string name) {
-	HP = 5;
-	dmg = 2;
-	name = "Pionek";
+Pawn::Pawn(int HP, int dmg, std::string name)
+	:figureHP(HP), figureDMG(dmg), figureName(name) {
 }
-Horseman::Horseman(int HP, int dmg, std::string name) {
-	HP = 3;
-    dmg= 5;
-    name= "Kon";
+Horseman::Horseman(int HP, int dmg, std::string name) 
+	:figureHP(HP), figureDMG(dmg), figureName(name){
 }
-Bishop::Bishop(int HP, int dmg, std::string name) {
-	HP = 7;
-    dmg= 3;
-    name= "Goniec";
+Bishop::Bishop(int HP, int dmg, std::string name) 
+	:figureHP(HP), figureDMG(dmg), figureName(name) {
 }
-Tower::Tower(int HP, int dmg, std::string name) {
-	HP = 8;
-    dmg= 2;
-    name= "Wieza";
+Tower::Tower(int HP, int dmg, std::string name)
+	: figureHP(HP), figureDMG(dmg), figureName(name) {
 }
-Queen::Queen(int HP, int dmg, std::string name) {
-	HP = 12;
-    dmg= 3;
-    name= "Hetman";
+Queen::Queen(int HP, int dmg, std::string name) 
+	: figureHP(HP), figureDMG(dmg), figureName(name) {
 }
-King::King(int HP, int dmg, std::string name) {
-	HP = 20;
-    dmg= 2;
-    name= "Krol";
+King::King(int HP, int dmg, std::string name) 
+	: figureHP(HP), figureDMG(dmg), figureName(name) {
 }
 
 bool Pawn::canAttak(int positionX, int positionY, int targetX, int targetY)

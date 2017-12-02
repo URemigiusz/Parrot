@@ -31,33 +31,25 @@ void GameObject::reveal()
     std::cout << GameObject::Name << std::endl;
 }
 
-bool GameObject::canMove(int targetX, int targetY)
-{
-    error("wywolano canMove() na GameObject");
-    return false;
-}
 
-
-
-Figure::Figure(std::string name, bool own, int HP, int dmg, int cordX, int cordY )
+/*Figure::Figure(std::string name, bool own, int HP, int dmg, int cordX, int cordY )
     :GameObject(name), owner(own), HP(HP), dmg(dmg)
-{
-}
+{}*/
 
 void Figure::reveal()
 {
     std::cout << Figure::Name << std::endl;
-    std::cout << "hp: " << Figure::HP << std::endl;
+    std::cout << "hp: " << Figure::figureHP << std::endl;
     //std::cout << "movement: " << Figure::movement << std::endl;
     //std::cout << "skill: " << Figure::skill << "  " << "defence: " << defence << std::endl;
-    std::cout << "dmg: " << Figure::dmg << std::endl;
+    std::cout << "dmg: " << Figure::figureDMG << std::endl;
     //std::cout << "armour: " << Figure::armour << std::endl;
 }
 
 void Figure::setHP(int hp)
 {
-    HP += hp;
-		if (HP < 0) {
+    figureHP += hp;
+		if (figureHP < 0) {
 			std::cout << "Z pola" << cordX << " " << cordY << "zniknęła figura" << Name << std::endl;
 	}
    
@@ -65,11 +57,11 @@ void Figure::setHP(int hp)
 
 
 
-bool Figure::canMove(int targetX, int targetY)
-{
+/*bool Figure::canMove(int targetX, int targetY, Board &board)
+{ 
     double required = 0;
     
-    if (Board[targetX][targetY]->Name == "obstacle")
+    if (board[targetX][targetY]->Name == "obstacle")
     {
         return 0;
     }
@@ -80,7 +72,7 @@ bool Figure::canMove(int targetX, int targetY)
     required = sqrt(X + Y);
 
     return required <= movement;
-}
+}*/
 
 
 bool Figure::isYour(bool player)
