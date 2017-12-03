@@ -10,6 +10,7 @@ set(SOURCE_FILES
         Game.cpp
         GameObject.cpp
         Header.h
+        File.cpp
         main.cpp)
 
 add_executable(Parrot ${SOURCE_FILES})
