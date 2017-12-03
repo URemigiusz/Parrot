@@ -100,3 +100,11 @@ bool Figure::isYour(bool player)
  if(player)player=0;
  else player = 1;
  }*/
+
+int wartoscBezwzgledna(int x){
+    if(x < 0){
+        x = x * (-1);
+        return(x);
+    }
+    else return(x);
+}
