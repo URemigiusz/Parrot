@@ -17,7 +17,7 @@ int main() {
     //openFile(); paweł pisze wczytywanie wszystkoeeeeego z pliku
 
     do {
-        player = roundNumber % 2 + 1;
+        player = roundNumber % 2 + 1 != 0;
         std::cout << "Tura gracza " << player << std::endl;
         attacked = 0;
         moved = 0;
