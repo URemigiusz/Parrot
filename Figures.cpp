@@ -70,3 +70,21 @@ bool King::canAttack(int targetX, int targetY) {
     return King::canAttack(cordX, cordY, targetX, targetY);
 }
 
+bool canAttack(const figType type, int cordX, int cordY, int targetX, int targetY) {
+    switch (type) {
+        case PAWN:
+            return Pawn::canAttack(cordX, cordY, targetX, targetY);
+        case KNIGHT:
+            return Knight::canAttack(cordX, cordY, targetX, targetY);
+        case BISHOP:
+            return Bishop::canAttack(cordX, cordY, targetX, targetY);
+        case ROOK:
+            return Rook::canAttack(cordX, cordY, targetX, targetY);
+        case QUEEN:
+            return Queen::canAttack(cordX, cordY, targetX, targetY);
+        case KING:
+            return Queen::canAttack(cordX, cordY, targetX, targetY);
+        default:
+            return false;
+    }
+}
