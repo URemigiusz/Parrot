@@ -7,7 +7,7 @@ Pawn::Pawn(int HP, int dmg, std::string name)
     const dmg = 2;
     const name = "Pionek";
 }
-Horseman::Horseman(int HP, int dmg, std::string name)
+Knight::Knight(int HP, int dmg, std::string name)
         :figureHP(HP), figureDMG(dmg), figureName(name) {
     HP = 3;
     const dmg = 5;
@@ -19,7 +19,7 @@ Bishop::Bishop(int HP, int dmg, std::string name)
     const dmg = 3;
     const name = "Goniec";
 }
-Tower::Tower(int HP, int dmg, std::string name)
+Rook::Rook(int HP, int dmg, std::string name)
         :figureHP(HP), figureDMG(dmg), figureName(name) {
     HP = 8;
     const dmg = 2;
@@ -48,7 +48,7 @@ bool Pawn::canAttack(int targetX, int targetY)
            targetX == x - 1 && targetY == y - 1;
 }
 
-bool  Horseman::canAttack(int targetX, int targetY)
+bool  Knight::canAttack(int targetX, int targetY)
 {
     int x = cordX;
     int y = cordY;
@@ -58,7 +58,7 @@ bool  Horseman::canAttack(int targetX, int targetY)
            x == targetX && wartoscBezwzgledna(targetY - y) == 1;
 }
 
-bool Tower::canAttack(int targetX, int targetY)
+bool Rook::canAttack(int targetX, int targetY)
 {
     int x = cordX;
     int y = cordY;

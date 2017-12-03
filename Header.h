@@ -51,18 +51,18 @@ public:
     bool canMove(int targetX, int targetY);
 };
 
-class Horseman : public Figure  //koń
+class Knight : public Figure  //koń
 {
 public:
-	Horseman(int HP, int dmg, std::string name);
+	Knight(int HP, int dmg, std::string name);
     bool canAttack(int targetX, int targetY);
     bool canMove(int targetX, int targetY);
 };
 
-class Tower : public Figure //wieża
+class Rook : public Figure //wieża
 {
 public:
-	Tower(int HP, int dmg, std::string name);
+	Rook(int HP, int dmg, std::string name);
     bool canAttack(int targetX, int targetY);
     bool canMove(int targetX, int targetY);
 };
