@@ -40,13 +40,13 @@ public:
     void swap(std::string a, std::string b);
     void swap(std::string a);
 
-    void add_rand_obstacles(int x, int y, int obsChance);
+    void add_rand_obstacles(/*int x, int y,*/ int obsChance);
     void GetBoard_from_File(std::string fileName);
 
 
     bool canMove(int cordX, int cordY, int targetX, int targetY);
 
-    void add_rand_obstacles(int x, int y, const std::function<bool(int, int)> &obs);
+    void add_rand_obstacles(/*int x, int y,*/ const std::function<bool(int, int)> &obs);
 };
 
 //Board board;

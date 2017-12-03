@@ -101,11 +101,11 @@ void Board::swap(std::string a)
 }
 
 
-void Board::add_rand_obstacles(int x, int y, const std::function<bool(int, int)> &obs)
+void Board::add_rand_obstacles(const std::function<bool(int, int)> &obs)
 {
-    for(int i = 0; i < x; i++)
+    for(int i = 0; i < X; i++)
     {
-        for(int k = 0; k < y; k++)
+        for(int k = 0; k < Y; k++)
         {
             if (i != 0 && i != X-1)
             {
@@ -120,9 +120,9 @@ void Board::add_rand_obstacles(int x, int y, const std::function<bool(int, int)>
     }
 }
 
-void Board::add_rand_obstacles(int x, int y, int obsChance) {
-    add_rand_obstacles(x, y,
-                       [obsChance](int i, int k) {
-                           return rand() % obsChance == 0;
-                       });
+void Board::add_rand_obstacles(int obsChance) {
+    add_rand_obstacles(
+            [obsChance](int i, int k) {
+                return rand() % obsChance == 0;
+            });
 }
