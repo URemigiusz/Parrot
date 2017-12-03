@@ -9,6 +9,7 @@ set(SOURCE_FILES
         Figures.cpp
         Game.cpp
         GameObject.cpp
+        File.cpp
         Header.h)
 
 set(MAIN_FILES
