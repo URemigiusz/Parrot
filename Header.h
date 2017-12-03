@@ -40,7 +40,7 @@ using GameObjectPtr = GameObject*;
 
 class EmptyField : public GameObject {
 public:
-	EmptyField() = default;
+	EmptyField() {};
 	const std::string* name() override {
 		return &emptyFieldNameString;
 	}
@@ -50,7 +50,7 @@ public:
 	bool canAttack(int targetX, int targetY) override {
 		return false;
 	};
-	void addHP(int hp) {} //bo mi sie nie chce teraz castowac
+	void addHP(int hp) override {} //bo mi sie nie chce teraz castowac
 };
 
 class Obstacle : public GameObject {
