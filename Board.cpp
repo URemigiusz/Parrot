@@ -1,3 +1,4 @@
+#include <functional>
 #include "Header.h"
 #include "Board.h"
 
@@ -100,15 +101,15 @@ void Board::swap(std::string a)
 }
 
 
-void Board::add_rand_obstacles(int x, int y, int obsChance)
+void Board::add_rand_obstacles(int x, int y, const std::function<bool(int, int)> &obs)
 {
-    for(int i = 0; i < X; i++)
+    for(int i = 0; i < x; i++)
     {
-        for(int k = 0; k < Y; k++)
+        for(int k = 0; k < y; k++)
         {
             if (i != 0 && i != X-1)
             {
-                if (rand() % obsChance == 0)
+                if (obs(i,k))//(rand() % obsChance == 0)
                     Rows[i][k - 1] = new Obstacle;
                 else
                     Rows[i][k] = new EmptyField;
@@ -117,4 +118,11 @@ void Board::add_rand_obstacles(int x, int y, int obsChance)
                 Rows[i][k] = new EmptyField;
         }
     }
+}
+
+void Board::add_rand_obstacles(int x, int y, int obsChance) {
+    add_rand_obstacles(x, y,
+                       [obsChance](int i, int k) {
+                           return rand() % obsChance == 0;
+                       });
 }

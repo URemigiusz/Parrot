@@ -1,4 +1,5 @@
 #pragma once
+#include <functional>
 #include "Header.h"
 
 class Line
@@ -44,6 +45,8 @@ public:
 
 
     bool canMove(int cordX, int cordY, int targetX, int targetY);
+
+    void add_rand_obstacles(int x, int y, const std::function<bool(int, int)> &obs);
 };
 
 //Board board;
