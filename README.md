@@ -9,6 +9,7 @@ Główna implementacja w języku C++11, nawet już się kompiluje od PR #9. I s�
 1. Plansza ma wymiary X×Y.
 2. Dwóch graczy, biały zaczyna.
 3. Figury:
+
 | Nazwa    | Codename | Wartość początkowa `HP` | Wartość `dmg` |
 | -------- | -------- | ----------------------- | ------------- |
 | `Pionek` | `Pawn`   | 5  | 2 |
