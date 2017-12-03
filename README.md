@@ -4,7 +4,7 @@ Fantasy Chess Project (codenamed Parrot) to projekt gry na bazie szachów o nied
 
 Główna implementacja w języku C++11, nawet już się kompiluje od PR #9. I są unit testy.
 
-## Autorzy
+## Autorzy i konsultanci
 
 - [Remigiusz Uszok (@URemigiusz)](github.com/URemigiusz/Parrot) — pomysłodawca, Project Owner, główny etc etc, kl. 1e IV LO Toruń
 - [Adam Wieczarek (@AWieczarek)](github.com/AWieczarek/Parrot) — programista […], kl. 1e IV LO Toruń
