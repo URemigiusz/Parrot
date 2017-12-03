@@ -18,7 +18,8 @@ set(MAIN_FILES
 set(TESTING_FILES
         ${SOURCE_FILES}
         test/catch.hpp
-        test/tests.cpp)
+        test/tests.cpp
+        test/BoardTest.cpp)
 
 add_executable(Parrot ${MAIN_FILES})
 add_executable(ParrotTest ${TESTING_FILES})
