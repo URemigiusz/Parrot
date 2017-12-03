@@ -17,4 +17,5 @@ Główna implementacja w języku C++11, nawet już się kompiluje od PR #9. I s�
 | `Wieza`  | `Rook`   | 8  | 2 |
 | `Hetman` | `Queen`  | 12 | 3 |
 | `Krol`   | `King`   | 20 | 2 |
+
 4. Pola mogą być puste, zajęte przez figury, lub zajęte przez przeszkody.
