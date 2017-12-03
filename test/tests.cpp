@@ -1,7 +1,8 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
-#include "Header.h"
+#include "../Header.h"
 
 TEST_CASE("testujemy abs", "[abs]") {
     REQUIRE(abs(-1)==1);
+    //REQUIRE(abs(-2)==1);
 }

@@ -9,7 +9,16 @@ set(SOURCE_FILES
         Figures.cpp
         Game.cpp
         GameObject.cpp
-        Header.h
+        Header.h)
+
+set(MAIN_FILES
+        ${SOURCE_FILES}
         main.cpp)
 
-add_executable(Parrot ${SOURCE_FILES})
+set(TESTING_FILES
+        ${SOURCE_FILES}
+        test/catch.hpp
+        test/tests.cpp)
+
+add_executable(Parrot ${MAIN_FILES})
+add_executable(ParrotTest ${TESTING_FILES})
