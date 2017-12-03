@@ -1,41 +1,40 @@
+#include <sstream>
 #include "Header.h"
 #include "Board.h"
 
-inline void error(const std::string message)
+inline void error(const std::string &message)
 {
     std::cout << "RUN_TIME_ERROR : " << message << std::endl;
 }
 
-int toint(char c){
+inline void log(const std::string &message) {
+    std::cout << "LOG : " << message << std::endl;
+}
+
+int toInt(char c, int x){
     
-    if ('a' <= c && c <= 'a' + board.getX())
+    if ('a' <= c && c <= 'a' + x /*board.getX()*/)
     {
         return c - 'a';
     }
     else
     {
-        error("toint -> wrong parameter: Letter");
+        error("toInt -> wrong parameter: Letter");
         return 0;
     }
 }
 
-int reverse(unsigned x)
+int reverse(unsigned x, int y)
 {
-    if(x > board.getY())
+    if(x > y /*board.getY()*/)
         error("reverse error");
 
-    return board.getY() - x + 1;
+    return /*board.getY()*/ y - x + 1;
 }
-
-GameObject::GameObject(std::string name)
-    :Name(name)
-{
-    
-}//getLine(plik, linia);       ===== Why is that???
 
 void GameObject::reveal()
 {
-    std::cout << GameObject::Name << std::endl;
+    std::cout << name() << std::endl;
 }
 
 
@@ -45,27 +44,29 @@ void GameObject::reveal()
 
 void Figure::reveal()
 {
-    std::cout << Figure::Name << std::endl;
-    std::cout << "hp: " << Figure::figureHP << std::endl;
+    std::cout << name() << std::endl;
+    std::cout << "hp: " << figureHP << std::endl;
     //std::cout << "movement: " << Figure::movement << std::endl;
     //std::cout << "skill: " << Figure::skill << "  " << "defence: " << defence << std::endl;
-    std::cout << "dmg: " << Figure::figureDMG << std::endl;
+    std::cout << "dmg: " << figureDMG << std::endl;
     //std::cout << "armour: " << Figure::armour << std::endl;
 }
 
-void Figure::setHP(int hp)
+void Figure::addHP(int hp)
 {
     figureHP += hp;
 		if (figureHP < 0) {
-			std::cout << "Z pola" << cordX << " " << cordY << "zniknęła figura" << Name << std::endl;
+            std::ostringstream stringStream;
+			stringStream << "Z pola" << cordX << " " << cordY <<
+                         "zniknęła figura" << name() << std::endl;
+            log(stringStream.str());
 	}
    
 }
 
-
-
-/*bool Figure::canMove(int targetX, int targetY, Board &board)
-{ 
+bool Board::canMove(int cordX, int cordY, int targetX, int targetY)
+{
+    /*
     double required = 0;
     
     if (board[targetX][targetY]->Name == "obstacle")
@@ -79,7 +80,9 @@ void Figure::setHP(int hp)
     required = sqrt(X + Y);
 
     return required <= movement;
-}*/
+     */
+    return false; //not implemented
+}
 
 
 bool Figure::isYour(bool player)
@@ -101,10 +104,6 @@ bool Figure::isYour(bool player)
  else player = 1;
  }*/
 
-int wartoscBezwzgledna(int x){
-    if(x < 0){
-        x = x * (-1);
-        return(x);
-    }
-    else return(x);
+int abs(int x){
+    return x < 0 ? -x : x;
 }

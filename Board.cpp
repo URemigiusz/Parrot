@@ -10,7 +10,7 @@ Line::Line(unsigned size)
 
 GameObject* &Line::operator[](unsigned index)
 {
-    return Fields[reverse(index) - 1];
+    return Fields[reverse(index, sizeof(Fields)) - 1];
 }
 
 
@@ -23,7 +23,7 @@ Board::Board(unsigned x, unsigned y)
         Rows[i] = Line(Y);
         for(int k = 0; k < Y; k++)
         {
-            Rows[i][k] = new GameObject("Field");
+            Rows[i][k] = new EmptyField;
         }
     }
 }
@@ -74,10 +74,10 @@ void Board::swap(unsigned x1, unsigned y1, unsigned x2, unsigned y2)
 
 void Board::swap(std::string a, std::string b)
 {
-    int x1 = toint(a[0]);
-    int y1 = reverse(a[1]);
-    int x2 = toint(b[0]);
-    int y2 = reverse(b[1]);
+    int x1 = toInt(a[0], getX());
+    int y1 = reverse(a[1], getY());
+    int x2 = toInt(b[0], getX());
+    int y2 = reverse(b[1], getY());
     
     GameObject* buffer;
     buffer = Rows[x1][y1];
@@ -88,10 +88,10 @@ void Board::swap(std::string a, std::string b)
 
 void Board::swap(std::string a)
 {
-    int x1 = toint(a[0]);
-    int y1 = reverse(a[1]);
-    int x2 = toint(a[0]);
-    int y2 = reverse(a[1]);
+    int x1 = toInt(a[0], getX());
+    int y1 = reverse(a[1], getY());
+    int x2 = toInt(a[0], getX());
+    int y2 = reverse(a[1], getY());
     
     GameObject* buffer;
     buffer = Rows[x1][y1];
@@ -109,12 +109,12 @@ void Board::add_rand_obstacles(int x, int y, int obsChance)
             if (i != 0 && i != X-1)
             {
                 if (rand() % obsChance == 0)
-                    Rows[i][k - 1] = new GameObject("Obstacle");
+                    Rows[i][k - 1] = new Obstacle;
                 else
-                    Rows[i][k] = new GameObject("Field");
+                    Rows[i][k] = new EmptyField;
             }
             else
-                Rows[i][k] = new GameObject("Field");
+                Rows[i][k] = new EmptyField;
         }
     }
 }

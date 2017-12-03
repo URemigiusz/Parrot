@@ -1,6 +1,8 @@
 #include "Header.h"
 #include "Board.h"
 
+Board board;
+
 static bool win          = false;
 static bool player       = false;
 static int roundNumber         = 0;
@@ -8,6 +10,8 @@ static bool attacked;
 static bool moved;
 static std::string input;
 static int positionX, positionY, targetX, targetY;
+
+void move() {}
 
 int main() {
     //openFile(); paweł pisze wczytywanie wszystkoeeeeego z pliku
@@ -23,14 +27,14 @@ int main() {
         do {
             std::cin >> input;
             if (input.size() == 2) {
-                positionX = reverse(input[1]);
-                positionY = toint(input[0]);
+                positionX = reverse(input[1], board.getY());
+                positionY = toInt(input[0], board.getX());
             }else if (input.size() == 3) {
-                positionX = reverse(input[1] * 10 + input[2]);
-                positionY = toint(input[0]);
+                positionX = reverse(input[1] * 10 + input[2], board.getY());
+                positionY = toInt(input[0], board.getX());
             }else error("Zbyt duzy input");
 
-            board[positionX][positionY]->reveal;
+            board[positionX][positionY]->reveal();
 
         } while (!(input.size() == 1 && input[0] == 'x'));
 //======================================MOVE============================================//
@@ -41,11 +45,11 @@ int main() {
                 std::cout << "Wybierz figure                     exit <-wyjdz " << std::endl;
                 std::cin >> input;
                 if (input.size() == 2) {
-                    positionX = reverse(input[1]);
-                    positionY = toint(input[0]);
+                    positionX = reverse(input[1], board.getY());
+                    positionY = toInt(input[0], board.getX());
                 } else if (input.size() == 3) {
-                    positionX = reverse(input[1] * 10 + input[2]);
-                    positionY = toint(input[0]);
+                    positionX = reverse(input[1] * 10 + input[2], board.getY());
+                    positionY = toInt(input[0], board.getX());
                 } else if (input == "exit") {
                     i--;
                     continue;
@@ -59,17 +63,17 @@ int main() {
             std::cout << "Wybierz cel :                          exit-wyjscie" << std::endl;
             std::cin >> input;
             if (input.size() == 2) {
-                targetX = reverse(input[1]);
-                targetY = toint(input[0]);
+                targetX = reverse(input[1], board.getY());
+                targetY = toInt(input[0], board.getX());
             } else if (input.size() == 3) {
-                targetX = reverse(input[1] * 10 + input[2]);
-                targetY = toint(input[0]);
+                targetX = reverse(input[1] * 10 + input[2], board.getY());
+                targetY = toInt(input[0], board.getX());
             } else if (input == "exit") {
                 i--;
                 continue;
             } else error("Zły input");
 
-            if(board[positionX][positionY]->canMove(targetX, targetY){         //drogi remku z przyszłości wiemy że to inaczej
+            if(board.canMove(positionX, positionY, targetX, targetY)){         //drogi remku z przyszłości wiemy że to inaczej
                 move(); // kiedys się zrobi
                 moved=1;
             }
@@ -88,11 +92,11 @@ int main() {
                 std::cout << "Wybierz figure :                    exit <-wyjdz " << std::endl;
                 std::cin >> input;
                 if (input.size() == 2) {
-                    positionX = reverse(input[1]);
-                    positionY = toint(input[0]);
+                    positionX = reverse(input[1], board.getY());
+                    positionY = toInt(input[0], board.getX());
                 } else if (input.size() == 3) {
-                    positionX = reverse(input[1] * 10 + input[2]);
-                    positionY = toint(input[0]);
+                    positionX = reverse(input[1] * 10 + input[2], board.getY());
+                    positionY = toInt(input[0], board.getX());
                 } else if (input == "exit") {
                     i--;
                     continue;
@@ -105,19 +109,19 @@ int main() {
             std::cout << "Wybierz cel : " << std::endl;
             std::cin >> input;
             if (input.size() == 2) {
-                targetX = reverse(input[1]);
-                targetY = toint(input[0]);
+                targetX = reverse(input[1], board.getY());
+                targetY = toInt(input[0], board.getX());
             } else if (input.size() == 3) {
-                targetX = reverse(input[1] * 10 + input[2]);
-                targetY = toint(input[0]);
+                targetX = reverse(input[1] * 10 + input[2], board.getY());
+                targetY = toInt(input[0], board.getX());
             } else if (input == "exit") {
                 i--;
                 continue;
             }
             else error("Zły input");
 
-            if(board[positionX][positionY]->canAttak(targetX, targetY){    //drogi remku z przyszłości wiemy że to inaczej
-                setHP(); // kiedys się zrobi żeby atakowało
+            if(board[positionX][positionY]->canAttack(targetX, targetY)){    //drogi remku z przyszłości wiemy że to inaczej
+                board[positionX][positionY]->addHP(123456/*placeholder*/); // kiedys się zrobi żeby atakowało
                 moved=1;
             }
              else {
