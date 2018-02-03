@@ -1,6 +1,6 @@
+#include <functional>
 #include "Header.h"
 #include "Board.h"
-
 
 Line::Line(unsigned size)
     :lineSize(size)
@@ -11,7 +11,7 @@ Line::Line(unsigned size)
 
 GameObject* &Line::operator[](unsigned index)
 {
-    return Fields[reverse(index) - 1];
+    return Fields[reverse(index, sizeof(Fields)) - 1];
 }
 
 
@@ -24,7 +24,7 @@ Board::Board(unsigned x, unsigned y)
         Rows[i] = Line(Y);
         for(int k = 0; k < Y; k++)
         {
-            Rows[i][k] = new GameObject("Field");
+            Rows[i][k] = new EmptyField;
         }
     }
 }
@@ -49,7 +49,7 @@ Board::~Board()
 
 Line& Board::operator[](unsigned index)
 {
-    return Rows[index];
+    return Rows[index - 1];
 }
 
 
@@ -75,10 +75,10 @@ void Board::swap(unsigned x1, unsigned y1, unsigned x2, unsigned y2)
 
 void Board::swap(std::string a, std::string b)
 {
-    int x1 = toint(a[0], X);
-    int y1 = reverse(a[1], Y);
-    int x2 = toint(b[0], X);
-    int y2 = reverse(b[1], Y);
+    int x1 = toInt(a[0], getX());
+    int y1 = reverse(a[1], getY());
+    int x2 = toInt(b[0], getX());
+    int y2 = reverse(b[1], getY());
     
     GameObject* buffer;
     buffer = Rows[x1][y1];
@@ -89,10 +89,10 @@ void Board::swap(std::string a, std::string b)
 
 void Board::swap(std::string a)
 {
-    int x1 = toint(a[0], X);
-    int y1 = reverse(a[1], Y);
-    int x2 = toint(a[3], X);
-    int y2 = reverse(a[4], Y);
+    int x1 = toInt(a[0], getX());
+    int y1 = reverse(a[1], getY());
+    int x2 = toInt(a[0], getX());
+    int y2 = reverse(a[1], getY());
     
     GameObject* buffer;
     buffer = Rows[x1][y1];
@@ -101,7 +101,7 @@ void Board::swap(std::string a)
 }
 
 
-void Board::add_rand_obstacles(int x, int y, int obsChance)
+void Board::add_rand_obstacles(const std::function<bool(int, int)> &obs)
 {
     for(int i = 0; i < X; i++)
     {
@@ -109,16 +109,20 @@ void Board::add_rand_obstacles(int x, int y, int obsChance)
         {
             if (i != 0 && i != X-1)
             {
-                if (rand() % obsChance == 0)
-                    Rows[i][k] = new GameObject("Obstacle");
+                if (obs(i,k))//(rand() % obsChance == 0)
+                    Rows[i][k - 1] = new Obstacle;
                 else
-                    Rows[i][k] = new GameObject("Field");
+                    Rows[i][k] = new EmptyField;
             }
             else
-                Rows[i][k] = new GameObject("Field");
+                Rows[i][k] = new EmptyField;
         }
     }
 }
 
-
-
+void Board::add_rand_obstacles(int obsChance) {
+    add_rand_obstacles(
+            [obsChance](int i, int k) {
+                return rand() % obsChance == 0;
+            });
+}
