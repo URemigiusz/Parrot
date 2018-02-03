@@ -88,3 +88,31 @@ bool canAttack(const figType type, int cordX, int cordY, int targetX, int target
             return false;
     }
 }
+
+bool Pawn::canMove(int cordX, int cordY, int targetX, int targetY) {
+    int x = cordX;
+    int y = cordY;
+    return abs(x - targetX) <= 3 && y == targetY ||
+           abs(y - targetY) <= 3 && x == targetX;
+}
+
+}
+/**=============[test gita]==========/
+/*bool Pawn::canMove(int targetX, int targetY) { //lel po co to????
+    return Pawn::canAttack(cordX, cordY, targetX, targetY);
+}*/
+/*
+ * bool Knight::canMove(int cordX, int cordY, int targetX, int targetY) {
+    int x = cordX;
+    int y = cordY;
+    int changedX = x - targetX;
+    int changedY = y - targetY;
+    if(){
+
+    }
+    else{
+        return abs(changedX) <= 8 && y == targetY ||
+               abs(changedY) <= 8 && x == targetX;
+    }
+}
+*/

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Parrot"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/deli-usr/Documents/My Projects/repository/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/deli-usr/Documents/My\ Projects/repository/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/deli-usr/Documents/My\ Projects/repository/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/deli-usr/Documents/My\ Projects/repository/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/deli-usr/Documents/My\ Projects/repository/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/deli-usr/Documents/My Projects/repository/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/deli-usr/Documents/My\ Projects/repository/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/deli-usr/Documents/My\ Projects/repository/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/deli-usr/Documents/My\ Projects/repository/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/deli-usr/Documents/My\ Projects/repository/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/deli-usr/Documents/My Projects/repository/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/deli-usr/Documents/My\ Projects/repository/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/deli-usr/Documents/My\ Projects/repository/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/deli-usr/Documents/My\ Projects/repository/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/deli-usr/Documents/My\ Projects/repository/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ParrotTest">
+				<Option output="/home/deli-usr/Documents/My Projects/repository/cmake-build-debug/ParrotTest" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/deli-usr/Documents/My Projects/repository/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../../../include/c++/7.3.0"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../../../include/c++/7.3.0/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../../../include/c++/7.3.0/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.3.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.3.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/deli-usr/Documents/My\ Projects/repository/cmake-build-debug/Makefile&quot;  VERBOSE=1 ParrotTest"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/deli-usr/Documents/My\ Projects/repository/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/deli-usr/Documents/My\ Projects/repository/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/deli-usr/Documents/My\ Projects/repository/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ParrotTest/fast">
+				<Option output="/home/deli-usr/Documents/My Projects/repository/cmake-build-debug/ParrotTest" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/deli-usr/Documents/My Projects/repository/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../../../include/c++/7.3.0"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../../../include/c++/7.3.0/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../../../include/c++/7.3.0/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.3.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.3.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/deli-usr/Documents/My\ Projects/repository/cmake-build-debug/Makefile&quot;  VERBOSE=1 ParrotTest/fast"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/deli-usr/Documents/My\ Projects/repository/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/deli-usr/Documents/My\ Projects/repository/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/deli-usr/Documents/My\ Projects/repository/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Parrot">
+				<Option output="/home/deli-usr/Documents/My Projects/repository/cmake-build-debug/Parrot" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/deli-usr/Documents/My Projects/repository/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../../../include/c++/7.3.0"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../../../include/c++/7.3.0/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../../../include/c++/7.3.0/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.3.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.3.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/deli-usr/Documents/My\ Projects/repository/cmake-build-debug/Makefile&quot;  VERBOSE=1 Parrot"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/deli-usr/Documents/My\ Projects/repository/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/deli-usr/Documents/My\ Projects/repository/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/deli-usr/Documents/My\ Projects/repository/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Parrot/fast">
+				<Option output="/home/deli-usr/Documents/My Projects/repository/cmake-build-debug/Parrot" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/deli-usr/Documents/My Projects/repository/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../../../include/c++/7.3.0"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../../../include/c++/7.3.0/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.3.0/../../../../include/c++/7.3.0/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.3.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.3.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/deli-usr/Documents/My\ Projects/repository/cmake-build-debug/Makefile&quot;  VERBOSE=1 Parrot/fast"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/deli-usr/Documents/My\ Projects/repository/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/deli-usr/Documents/My\ Projects/repository/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/deli-usr/Documents/My\ Projects/repository/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/deli-usr/Documents/My Projects/repository/Board.cpp">
+			<Option target="ParrotTest"/>
+			<Option target="Parrot"/>
+		</Unit>
+		<Unit filename="/home/deli-usr/Documents/My Projects/repository/Board.h">
+			<Option target="ParrotTest"/>
+			<Option target="Parrot"/>
+		</Unit>
+		<Unit filename="/home/deli-usr/Documents/My Projects/repository/Figures.cpp">
+			<Option target="ParrotTest"/>
+			<Option target="Parrot"/>
+		</Unit>
+		<Unit filename="/home/deli-usr/Documents/My Projects/repository/File.cpp">
+			<Option target="ParrotTest"/>
+			<Option target="Parrot"/>
+		</Unit>
+		<Unit filename="/home/deli-usr/Documents/My Projects/repository/Game.cpp">
+			<Option target="ParrotTest"/>
+			<Option target="Parrot"/>
+		</Unit>
+		<Unit filename="/home/deli-usr/Documents/My Projects/repository/GameObject.cpp">
+			<Option target="ParrotTest"/>
+			<Option target="Parrot"/>
+		</Unit>
+		<Unit filename="/home/deli-usr/Documents/My Projects/repository/Header.h">
+			<Option target="ParrotTest"/>
+			<Option target="Parrot"/>
+		</Unit>
+		<Unit filename="/home/deli-usr/Documents/My Projects/repository/main.cpp">
+			<Option target="Parrot"/>
+		</Unit>
+		<Unit filename="/home/deli-usr/Documents/My Projects/repository/test/BoardTest.cpp">
+			<Option target="ParrotTest"/>
+		</Unit>
+		<Unit filename="/home/deli-usr/Documents/My Projects/repository/test/catch.hpp">
+			<Option target="ParrotTest"/>
+		</Unit>
+		<Unit filename="/home/deli-usr/Documents/My Projects/repository/test/tests.cpp">
+			<Option target="ParrotTest"/>
+		</Unit>
+		<Unit filename="/home/deli-usr/Documents/My Projects/repository/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
