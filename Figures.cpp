@@ -152,7 +152,7 @@ bool styleA(int targetX, int targetY) { //+
     else return true;
 }
 
-bool styleA(int targetX, int targetY){//x
+bool styleB(int targetX, int targetY){//x
     int x = cordX;
     int y = cordY;
     int changedX = x - targetX;
