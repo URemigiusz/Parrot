@@ -89,14 +89,7 @@ bool canAttack(const figType type, int cordX, int cordY, int targetX, int target
     }
 }
 
-bool Pawn::canMove(int cordX, int cordY, int targetX, int targetY) {
-    int x = cordX;
-    int y = cordY;
-    return abs(x - targetX) <= 3 && y == targetY ||
-           abs(y - targetY) <= 3 && x == targetX;
-}
 
-}
 /**=============[test gita]==========/
 /*bool Pawn::canMove(int targetX, int targetY) { //lel po co to????
     return Pawn::canAttack(cordX, cordY, targetX, targetY);
@@ -116,3 +109,77 @@ bool Pawn::canMove(int cordX, int cordY, int targetX, int targetY) {
     }
 }
 */
+
+bool Pawn::canMove(int cordX, int cordY, int targetX, int targetY) {
+    if(styleA((targetX,targetY)) return true;
+    else return false;
+}
+
+bool Knight::canMove(int targetX, int targetY)
+{
+    if(styleA(targetX,targetY) || styleB(targetX,targetY)) return true;
+    else return false;
+}
+//powinno się gdzieś dodać movePoints
+bool styleA(int targetX, int targetY) { //+
+    int x = cordX;
+    int y = cordY;
+    int changedX = x - targetX;
+    int changedY = y - targetY;
+
+    if(changedX > movePoints || changedY > movePoints) return 0;
+
+    if( changeX < 0 && y == targetY){ // poziomo lewo
+        for(int i = 1; i <= changedX; i++){
+            if(Board[x-i][y] != /*EmptyField*/) return 0;
+        }
+    }
+    else if(changedX > 0 && y == targetY){ //poziomo prawo
+        for(int i = 1; i <= changedX; i++){
+            if(Board[x+i][y] != /*EmptyField*/) return 0;
+        }
+    }
+    else if(changedX == 0 && y < targetY){ // w gore
+        for(int i = 1; i <= changedX; i++){
+            if(Board[x][y+i] != /*EmptyField*/) return 0;
+        }
+    }
+    else if(changedX == 0 && y > targetY){ //w dol
+        for(int i = 1; i <= changedX; i++){
+            if(Board[x][y-i] != /*EmptyField*/) return 0;
+        }
+    }
+    else return true;
+}
+
+bool styleA(int targetX, int targetY){//x
+    int x = cordX;
+    int y = cordY;
+    int changedX = x - targetX;
+    int changedY = y - targetY;
+
+    if(changedX > movePoints || changedY > movePoints) return 0;
+
+    if(changedX < 0 && changedY > 0){ //lewy górny
+        for(int i = 1; i <= changedX; i++){
+            if(Board[x-i][y+i] != /*EmptyField*/) return 0;
+        }
+    }
+    else if(changedX > 0 && changedY > 0){ //Prawy górny
+        for(int i = 1; i <= changedX; i++){
+            if(Board[x+i][y+i] != /*EmptyField*/) return 0;
+        }
+    }
+    else if(changedX < 0 && changedY < 0){ //lewy dolny
+        for(int i = 1; i <= changedX; i++){
+            if(Board[x-i][y-i] != /*EmptyField*/) return 0;
+        }
+    }
+    else if(changedX > 0 && changedY < 0){ //prawy górny
+        for(int i = 1; i <= changedX; i++){
+            if(Board[x+i][y-i] != /*EmptyField*/) return 0;
+        }
+    }
+    else return true;
+}
+
