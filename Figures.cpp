@@ -90,36 +90,8 @@ bool canAttack(const figType type, int cordX, int cordY, int targetX, int target
 }
 
 
-/**=============[test gita]==========/
-/*bool Pawn::canMove(int targetX, int targetY) { //lel po co to????
-    return Pawn::canAttack(cordX, cordY, targetX, targetY);
-}*/
-/*
- * bool Knight::canMove(int cordX, int cordY, int targetX, int targetY) {
-    int x = cordX;
-    int y = cordY;
-    int changedX = x - targetX;
-    int changedY = y - targetY;
-    if(){
 
-    }
-    else{
-        return abs(changedX) <= 8 && y == targetY ||
-               abs(changedY) <= 8 && x == targetX;
-    }
-}
-*/
 
-bool Pawn::canMove(int cordX, int cordY, int targetX, int targetY) {
-    if(styleA((targetX,targetY)) return true;
-    else return false;
-}
-
-bool Knight::canMove(int targetX, int targetY)
-{
-    if(styleA(targetX,targetY) || styleB(targetX,targetY)) return true;
-    else return false;
-}
 //powinno się gdzieś dodać movePoints
 bool styleA(int targetX, int targetY) { //+
     int x = cordX;
@@ -183,3 +155,30 @@ bool styleB(int targetX, int targetY){//x
     else return true;
 }
 
+
+
+/*=======================[FUNKCJE DO SPRAWDZANIA PRZESZKOD]====================*/
+bool Pawn::canMove(int cordX, int cordY, int targetX, int targetY) {
+    if(styleA((targetX,targetY)) return true;
+            else return false;
+}
+
+bool Knight::canMove(int targetX, int targetY) {
+    if(styleA(targetX,targetY) || styleB(targetX,targetY)) return true;
+    else return false;
+}
+
+bool Rook::canMove(int targetX, int targetY) {
+    if(styleA(targetX,targetY)) return true;
+    else return false;
+}
+
+bool Bishop::canMove(int targetX, int targetY) {
+    if(styleB(targetX,targetY)) return true;
+    else return false;
+}
+
+bool Queen::canMove(int targetX, int targetY) {
+    if(styleA(targetX,targetY)) return true;
+    else return false;
+}
