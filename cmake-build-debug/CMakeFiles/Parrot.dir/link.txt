@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/Parrot.dir/Board.cpp.o CMakeFiles/Parrot.dir/Figures.cpp.o CMakeFiles/Parrot.dir/Game.cpp.o CMakeFiles/Parrot.dir/GameObject.cpp.o CMakeFiles/Parrot.dir/File.cpp.o CMakeFiles/Parrot.dir/main.cpp.o  -o Parrot 
