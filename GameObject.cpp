@@ -84,7 +84,7 @@ bool Figure::isYour(bool player) {
 void setHP(int dmg, Figure *target) {
     if ((*target).figureHP < dmg) {
         //zabijaj
-        std::cout<<(*target).type << " zginl "<<d
+        std::cout<<(*target).type << " zginl "<<dmg<<" obrazen"<<std::endl;
     } else {
         (*target).figureHP -= dmg;  //figura target dstaje dmg obrazen
         std::cout << (*target).type << " otrzymal "<<dmg<<" obrazen"<<std::endl;

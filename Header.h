@@ -7,6 +7,8 @@
 #include <array>
 #include <cmath>
 #include <fstream>
+#include "Board.h"
+
 
 const bool WHITE = 0;
 const bool BLACK = 1;
@@ -24,17 +26,28 @@ inline void error(const std::string &message);
 int toInt(char c, int x);
 int reverse(unsigned x, int y);
 
+
 class GameObject{
 //private:
 public:
     virtual const std::string* name()= 0;
     //GameObject(std::string name = "uninitialized");
     virtual void reveal();
+
 	int cordX{};
 	int cordY{};
 	//virtual bool canMove(int targetX, int targetY, Board &board)=0;
 	virtual bool canAttack(int targetX, int targetY) = 0;
 	virtual void addHP(int hp) = 0; // bo mi sie nie chce teraz castowac
+    virtual bool isEmpty(){ //sprawdzanie czy jest puste
+        return false;
+    }
+    virtual bool isObstacle(){
+        return false;
+    }
+    virtual const figType* getFigType(){
+        return nullptr;
+    }
 };
 using GameObjectPtr = GameObject*;
 
@@ -51,6 +64,9 @@ public:
 		return false;
 	};
 	void addHP(int hp) override {} //bo mi sie nie chce teraz castowac
+    bool isEmpty() override { //no prawda bo puste
+        return true;
+    }
 };
 
 class Obstacle : public GameObject {
@@ -66,6 +82,12 @@ public:
 		return false;
 	};
 	void addHP(int hp) {} //bo mi sie nie chce teraz castowac
+    bool isEmpty() override {
+        return false;
+    }
+    virtual bool isObstacle(){
+        return true;
+    }
 };
 
 class Figure : public GameObject{
@@ -75,6 +97,7 @@ public:
 	bool owner;
 	int figureHP;
     int figureDMG;
+    int movePoints;
 	const figType &type;
 	//Figure(std::string name, bool own, int HP, int dmg, int cordX, int cordY);
 	Figure(const figType &type, bool owner)
@@ -96,25 +119,36 @@ public:
     //bool canMove(int targetX, int targetY);
 	//bool canMove(int targetX, int targetY, Board &board);
     virtual bool canAttack(int targetX, int targetY) = 0;
-
+    bool styleA(int targetX, int targetY, Board &board);
+    bool styleB(int targetX, int targetY, Board &board);
+    bool isEmpty() override {
+        return false;
+    }
+    const figType* getFigType() override {
+        return &type;
+    }
+    virtual bool canMove(int targetX, int targetY);
 };
 
 //dziedziczenie po klasie Figure
 class Pawn : public Figure  //pionek
 {
 public:
+
 	explicit Pawn(bool owner) : Figure(PAWN, owner) {}
 	Pawn(bool owner, int HP) : Figure(PAWN, owner, HP) {}
 	Pawn(bool owner, int HP, int dmg)
 			: Figure(PAWN, owner, HP, dmg) {}
 	bool canAttack(int targetX, int targetY) override;
 	static bool canAttack(int cordX, int cordY, int targetX, int targetY);
-	//bool canMove(int targetX, int targetY);
+	bool canMove(int targetX, int targetY);
+
 };
 
 class Knight : public Figure  //koń
 {
 public:
+
 	explicit Knight(bool owner) : Figure(KNIGHT, owner) {}
 	Knight(bool owner, int HP) : Figure(KNIGHT, owner, HP) {}
 	Knight(bool owner, int HP, int dmg)
@@ -122,12 +156,14 @@ public:
 
 	bool canAttack(int targetX, int targetY) override;
 	static bool canAttack(int cordX, int cordY, int targetX, int targetY);
-	//bool canMove(int targetX, int targetY);
+	bool canMove(int targetX, int targetY);
+
 };
 
 class Rook : public Figure //wieża
 {
 public:
+
 	explicit Rook(bool owner) : Figure(ROOK, owner) {}
 	Rook(bool owner, int HP) : Figure(ROOK, owner, HP) {}
 	Rook(bool owner, int HP, int dmg)
@@ -135,12 +171,14 @@ public:
 
 	bool canAttack(int targetX, int targetY) override;
 	static bool canAttack(int cordX, int cordY, int targetX, int targetY);
-	//bool canMove(int targetX, int targetY);
+	bool canMove(int targetX, int targetY);
+
 };
 
 class Bishop : public Figure  //goniec
 {
 public:
+
 	explicit Bishop(bool owner) : Figure(BISHOP, owner) {}
 	Bishop(bool owner, int HP) : Figure(BISHOP, owner, HP) {}
 	Bishop(bool owner, int HP, int dmg)
@@ -148,24 +186,30 @@ public:
 
 	bool canAttack(int targetX, int targetY) override;
 	static bool canAttack(int cordX, int cordY, int targetX, int targetY);
-	//bool canMove(int targetX, int targetY);
+	bool canMove(int targetX, int targetY);
+
 };
 
 class Queen : public Figure  //królowa
 {
 public:
+
 	explicit Queen(bool owner) : Figure(QUEEN, owner) {}
 	Queen(bool owner, int HP) : Figure(QUEEN, owner, HP) {}
 	Queen(bool owner, int HP, int dmg)
 			: Figure(QUEEN, owner, HP, dmg) {}
     bool canAttack(int targetX, int targetY) override;
 	static bool canAttack(int cordX, int cordY, int targetX, int targetY);
-	//bool canMove(int targetX, int targetY);
+	bool canMove(int targetX, int targetY);
+
 };
+
+//commit testowy
 
 class King : public Figure  //król
 {
 public:
+
 	explicit King(bool owner) : Figure(KING, owner) {}
 	King(bool owner, int HP) : Figure(KING, owner, HP) {}
 	King(bool owner, int HP, int dmg)
@@ -173,6 +217,7 @@ public:
 
 	bool canAttack(int targetX, int targetY) override;
 	static bool canAttack(int cordX, int cordY, int targetX, int targetY);
-	//bool canMove(int targetX, int targetY);
+	bool canMove(int targetX, int targetY);
+
 };
 
