@@ -1,3 +1,5 @@
 /Parrot/Debug/
 /.vs/
 /Debug/
+/.idea/workspace.xml
+/cmake-build-debug/
