@@ -159,26 +159,26 @@ bool styleB(int targetX, int targetY){//x
 
 /*=======================[FUNKCJE DO SPRAWDZANIA PRZESZKOD]====================*/
 bool Pawn::canMove(int cordX, int cordY, int targetX, int targetY) {
-    if(styleA((targetX,targetY)) return true;
+    if(styleA(targetX, targetY)) return true;
             else return false;
 }
 
-bool Knight::canMove(int targetX, int targetY) {
+bool Knight::canMove(int cordX, int cordY, int targetX, int targetY) {
     if(styleA(targetX,targetY) || styleB(targetX,targetY)) return true;
     else return false;
 }
 
-bool Rook::canMove(int targetX, int targetY) {
+bool Rook::canMove(int cordX, int cordY, int targetX, int targetY) {
     if(styleA(targetX,targetY)) return true;
     else return false;
 }
 
-bool Bishop::canMove(int targetX, int targetY) {
+bool Bishop::canMove(int cordX, int cordY, int targetX, int targetY) {
     if(styleB(targetX,targetY)) return true;
     else return false;
 }
 
-bool Queen::canMove(int targetX, int targetY) {
+bool Queen::canMove(int cordX, int cordY, int targetX, int targetY) {
     if(styleA(targetX,targetY)) return true;
     else return false;
 }
