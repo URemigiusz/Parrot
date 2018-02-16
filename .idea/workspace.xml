@@ -9,11 +9,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="586277b5-f94e-420d-91f1-3560f04710f6" name="Default" comment="Jakieś stare commitsy">
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Parrot.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Testing.xml" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Testing.xml" />
+    <list default="true" id="586277b5-f94e-420d-91f1-3560f04710f6" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -197,12 +194,20 @@
       <option name="presentableId" value="Default" />
       <updated>1517690592463</updated>
       <workItem from="1517690601419" duration="6054000" />
-      <workItem from="1518821860666" duration="760000" />
+      <workItem from="1518821860666" duration="790000" />
     </task>
+    <task id="LOCAL-00001" summary="Jakieś stare commitsy">
+      <created>1518822643623</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1518822643623</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6814000" />
+    <option name="totallyTimeSpent" value="6844000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
@@ -231,6 +236,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Jakieś stare commitsy" />
+    <option name="LAST_COMMIT_MESSAGE" value="Jakieś stare commitsy" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
