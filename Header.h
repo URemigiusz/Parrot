@@ -177,6 +177,8 @@ public:
 
 };
 
+//commit testowy
+
 class King : public Figure  //król
 {
 public:
