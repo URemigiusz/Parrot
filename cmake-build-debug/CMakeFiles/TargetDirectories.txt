@@ -1,4 +1,0 @@
-/home/deli-usr/Documents/My Projects/repository/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/deli-usr/Documents/My Projects/repository/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/deli-usr/Documents/My Projects/repository/cmake-build-debug/CMakeFiles/ParrotTest.dir
-/home/deli-usr/Documents/My Projects/repository/cmake-build-debug/CMakeFiles/Parrot.dir
