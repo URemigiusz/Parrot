@@ -100,13 +100,17 @@ bool Figure::isYour(bool player) {
     return owner == player;
 }
 
-void setHP(int dmg, Figure *target) {
+//jeżeli setHP zwraca false oznacza to że król zginął
+//jeżeli nie będzie można atakować swoich to tutaj trzeba dodać sprawdzanie ownera
+bool setHP(int dmg, Figure *target) {
     if ((*target).figureHP < dmg) {
         //zabijaj
-        std::cout<<(*target).type << " zginl "<<dmg<<" obrazen"<<std::endl;
+        std::cout<<(*target).type << " zginal "<<dmg<<" obrazen"<<std::endl;
+        return !((*target).type == KING);
     } else {
         (*target).figureHP -= dmg;  //figura target dstaje dmg obrazen
         std::cout << (*target).type << " otrzymal "<<dmg<<" obrazen"<<std::endl;
+        return true;
     }
 }
 

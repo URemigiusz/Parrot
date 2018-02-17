@@ -1,2 +1,6 @@
-Implementacja getCord'�w
-wczytywanie wszystkiego z plik�w
+Implementacja getCord'�w
+wczytywanie wszystkiego z plik�w
+- DELI > sprawdź czy król zginął
+Zrobić gierkę
+sprawić by gieka była fajna 200$
+za sztukę
