@@ -205,3 +205,4 @@ public:
 };
 
 bool canThisAttack(figType type, int cordX, int cordY, int targetX, int targetY);
+bool setHP(int dmg, Figure *target, bool player);

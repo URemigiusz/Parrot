@@ -123,8 +123,8 @@ int main() {
             else error("Zły input");
 
             if(board[positionX][positionY]->canAttack(positionX, positionY, targetX, targetY)){    //drogi remku z przyszłości wiemy że to inaczej
-
-               attacked = true;
+                if (setHP((*board[positionX][positionY])->figureDMG, *board[targetX][targetY], player)) win = true; //zabicie króla kończy grę
+                else attacked = true;
             }
              else {
                 std::cout<<"Nie mozesz sie tak ruszyc!" << std::endl;
