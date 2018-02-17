@@ -75,7 +75,8 @@ bool Board::canMove(int cordX, int cordY, int targetX, int targetY) {
         case QUEEN:
             return styleA(*tenFig, cordX, cordY, targetX, targetY);
         case KING:
-            return false; //not implemented
+            return (styleA(*tenFig, cordX, cordY, targetX, targetY) ||
+                    styleB(*tenFig, cordX, cordY, targetX, targetY));
     }
     /*
     double required = 0;
