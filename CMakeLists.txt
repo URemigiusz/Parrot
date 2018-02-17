@@ -3,19 +3,24 @@ project(Parrot)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(Parrot
-    test/BoardTest.cpp
-    test/catch.hpp
-    test/tests.cpp
-    .gitignore
-    Board.cpp
-    Board.h
-    CMakeLists.txt
-    Figures.cpp
-    File.cpp
-    Game.cpp
-    GameObject.cpp
-    Header.h
-    main.cpp
-    README.md
-    ToDoList.txt)
+set(SOURCE_FILES
+	Board.cpp
+	Board.h
+	Figures.cpp
+	Game.cpp
+	GameObject.cpp
+	File.cpp
+	Header.h)
+
+set(MAIN_FILES
+	${SOURCE_FILES}
+	main.cpp)
+
+set(TESTING_FILES
+	${SOURCE_FILES}
+	test/catch.hpp
+	test/tests.cpp
+	test/BoardTest.cpp)
+
+add_executable(Parrot ${MAIN_FILES})
+add_executable(ParrotTest ${TESTING_FILES})
