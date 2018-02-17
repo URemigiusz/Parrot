@@ -1,18 +1,20 @@
 #include "Header.h"
 #include "Board.h"
 
-void GetFromFile(Board &board)
+Board *GetFromFile()
 {
     std::fstream file;
     file.open("Save.txt",std::ios::in);
 
+    // Otwarcie pliku
+
     if(!file.good())
     {
         error("File is not Exist!!!");
-        return;
+        return nullptr;
     }
 
-    //plik istnieje
+    // Sprawdzenie, czy plik istnieje
 
     std::string line;
 
@@ -37,10 +39,10 @@ void GetFromFile(Board &board)
         Board_File_X = Board_File_X * 10 + (int)line[iterator] - 48;
     }
 
+    // Zmienne Board_File_X i Board_file_Y zawierają w sobie rozmiary planszy (x i y)
 
     //tu zaimplementowac podmiane planszy...
-
-    //wczytane zostaly zmienne Board_File_Y i Board_File_X
+    Board board(Board_File_X, Board_File_Y);
 
     while(!file.eof())       //wczytywanie kolejnych pol
     {
@@ -56,8 +58,10 @@ void GetFromFile(Board &board)
 
         for(iterator = 6; line[iterator] != ','; iterator+=1)
         {
-            Position_File_Y = Position_File_Y * 10 + (int)line[iterator]-48;
+            Position_File_Y = Position_File_Y * 10 + (int)line[iterator] - 48;
         }
+
+        // Position_File_Y zawiera w sobie współrzędną y pola
 
         iterator++;
 
@@ -66,6 +70,7 @@ void GetFromFile(Board &board)
             Position_File_X = Position_File_X * 10 + (int)line[iterator] - 48;
         }
 
+        // Position_File_X zawiera w sobie współrzędną x pola
 
         //wczytana lokalizacja pola Position_File_Y i Position_File_X
 
@@ -91,7 +96,14 @@ void GetFromFile(Board &board)
 
         iterator++;
 
-        Own_File = line[iterator];
+        if(line[iterator] == '0')
+        {
+            Own_File = 0;
+        }
+        else
+        {
+            Own_File = 1;
+        }
 
         //mam Own_File
 
@@ -136,4 +148,5 @@ void GetFromFile(Board &board)
 
 
     file.close();
+    return &board;
 }
