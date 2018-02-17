@@ -50,7 +50,7 @@ void Figure::addHP(int hp) {
     figureHP += hp;
     if (figureHP < 0) {
         std::ostringstream stringStream;
-        stringStream << "Z pola" << cordX << " " << cordY <<
+        stringStream << //"Z pola" << cordX << " " << cordY <<
                      "zniknęła figura" << name() << std::endl;
         log(stringStream.str());
     }
@@ -58,6 +58,26 @@ void Figure::addHP(int hp) {
 }
 
 bool Board::canMove(int cordX, int cordY, int targetX, int targetY) {
+    GameObject *ten = operator[](cordX)[cordY];
+    if (ten->isEmpty() || ten->isObstacle()) return false;
+    auto *tenFig = dynamic_cast<Figure *>(ten);
+    const figType *type = tenFig->getFigType();
+    switch (*type) {
+        case PAWN:
+            return styleA(*tenFig, cordX, cordY, targetX, targetY);
+        case KNIGHT:
+            return (styleA(*tenFig, cordX, cordY, targetX, targetY) ||
+                    styleB(*tenFig, cordX, cordY, targetX, targetY));
+        case ROOK:
+            return styleA(*tenFig, cordX, cordY, targetX, targetY);
+        case BISHOP:
+            return styleB(*tenFig, cordX, cordY, targetX, targetY);
+        case QUEEN:
+            return styleA(*tenFig, cordX, cordY, targetX, targetY);
+        case KING:
+            return (styleA(*tenFig, cordX, cordY, targetX, targetY) ||
+                    styleB(*tenFig, cordX, cordY, targetX, targetY));
+    }
     /*
     double required = 0;
     
@@ -73,7 +93,6 @@ bool Board::canMove(int cordX, int cordY, int targetX, int targetY) {
 
     return required <= movement;
      */
-    return false; //not implemented
 }
 
 
