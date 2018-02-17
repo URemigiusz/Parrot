@@ -7,7 +7,6 @@
 #include <array>
 #include <cmath>
 #include <fstream>
-#include "Board.h"
 
 
 const bool WHITE = 0;
@@ -119,15 +118,12 @@ public:
     //bool canMove(int targetX, int targetY);
 	//bool canMove(int targetX, int targetY, Board &board);
     virtual bool canAttack(int targetX, int targetY) = 0;
-    bool styleA(int targetX, int targetY, Board &board);
-    bool styleB(int targetX, int targetY, Board &board);
     bool isEmpty() override {
         return false;
     }
     const figType* getFigType() override {
         return &type;
     }
-    virtual bool canMove(int targetX, int targetY);
 };
 
 //dziedziczenie po klasie Figure
@@ -141,8 +137,6 @@ public:
 			: Figure(PAWN, owner, HP, dmg) {}
 	bool canAttack(int targetX, int targetY) override;
 	static bool canAttack(int cordX, int cordY, int targetX, int targetY);
-	bool canMove(int targetX, int targetY);
-
 };
 
 class Knight : public Figure  //koń
@@ -156,8 +150,6 @@ public:
 
 	bool canAttack(int targetX, int targetY) override;
 	static bool canAttack(int cordX, int cordY, int targetX, int targetY);
-	bool canMove(int targetX, int targetY);
-
 };
 
 class Rook : public Figure //wieża
@@ -171,8 +163,6 @@ public:
 
 	bool canAttack(int targetX, int targetY) override;
 	static bool canAttack(int cordX, int cordY, int targetX, int targetY);
-	bool canMove(int targetX, int targetY);
-
 };
 
 class Bishop : public Figure  //goniec
@@ -186,8 +176,6 @@ public:
 
 	bool canAttack(int targetX, int targetY) override;
 	static bool canAttack(int cordX, int cordY, int targetX, int targetY);
-	bool canMove(int targetX, int targetY);
-
 };
 
 class Queen : public Figure  //królowa
@@ -200,8 +188,6 @@ public:
 			: Figure(QUEEN, owner, HP, dmg) {}
     bool canAttack(int targetX, int targetY) override;
 	static bool canAttack(int cordX, int cordY, int targetX, int targetY);
-	bool canMove(int targetX, int targetY);
-
 };
 
 //commit testowy
@@ -217,7 +203,5 @@ public:
 
 	bool canAttack(int targetX, int targetY) override;
 	static bool canAttack(int cordX, int cordY, int targetX, int targetY);
-	bool canMove(int targetX, int targetY);
-
 };
 

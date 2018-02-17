@@ -94,92 +94,64 @@ bool canAttack(const figType type, int cordX, int cordY, int targetX, int target
 
 
 //powinno się gdzieś dodać movePoints
-bool Figure::styleA(int targetX, int targetY, Board &board) { //+
-    int x = cordX;
-    int y = cordY;
+bool Board::styleA(Figure &fig, int targetX, int targetY) { //+
+    int x = fig.cordX;
+    int y = fig.cordY;
     int changedX = x - targetX;
     int changedY = y - targetY;
 
-    if(changedX > movePoints || changedY > movePoints) return 0;
+    if(changedX > fig.movePoints || changedY > fig.movePoints) return 0;
 
     if( changedX < 0 && y == targetY){ // poziomo lewo
         for(int i = 1; i <= changedX; i++){
-            if(!board[x - i][y]->isEmpty()) return 0;
+            if(!operator[](x - i)[y]->isEmpty()) return 0;
         }
     }
     else if(changedX > 0 && y == targetY){ //poziomo prawo
         for(int i = 1; i <= changedX; i++){
-            if(board[x+i][y]->isEmpty()) return 0;
+            if(operator[](x+i)[y]->isEmpty()) return 0;
         }
     }
     else if(changedX == 0 && y < targetY){ // w gore
         for(int i = 1; i <= changedX; i++){
-            if(board[x][y+i]->isEmpty()) return 0;
+            if(operator[](x)[y+i]->isEmpty()) return 0;
         }
     }
     else if(changedX == 0 && y > targetY){ //w dol
         for(int i = 1; i <= changedX; i++){
-            if(board[x][y-i]->isEmpty()) return 0;
+            if(operator[](x)[y-i]->isEmpty()) return 0;
         }
     }
     else return true;
 }
 
-bool Figure::styleB(int targetX, int targetY,  Board &board){//x
-    int x = cordX;
-    int y = cordY;
+bool Board::styleB(Figure &fig, int targetX, int targetY){//x
+    int x = fig.cordX;
+    int y = fig.cordY;
     int changedX = x - targetX;
     int changedY = y - targetY;
 
-    if(changedX > movePoints || changedY > movePoints) return 0;
+    if(changedX > fig.movePoints || changedY > fig.movePoints) return 0;
 
     if(changedX < 0 && changedY > 0){ //lewy górny
         for(int i = 1; i <= changedX; i++){
-            if(board[x-i][y+i]->isEmpty()) return 0;
+            if(operator[](x-i)[y+i]->isEmpty()) return 0;
         }
     }
     else if(changedX > 0 && changedY > 0){ //Prawy górny
         for(int i = 1; i <= changedX; i++){
-            if(board[x+i][y+i]->isEmpty()) return 0;
+            if(operator[](x+i)[y+i]->isEmpty()) return 0;
         }
     }
     else if(changedX < 0 && changedY < 0){ //lewy dolny
         for(int i = 1; i <= changedX; i++){
-            if(board[x-i][y-i]->isEmpty()) return 0;
+            if(operator[](x-i)[y-i]->isEmpty()) return 0;
         }
     }
     else if(changedX > 0 && changedY < 0){ //prawy górny
         for(int i = 1; i <= changedX; i++){
-            if(board[x+i][y-i]->isEmpty()) return 0;
+            if(operator[](x+i)[y-i]->isEmpty()) return 0;
         }
     }
     else return true;
-}
-
-
-
-/*=======================[FUNKCJE DO SPRAWDZANIA PRZESZKOD]====================*/
-bool Pawn::canMove(int targetX, int targetY) {
-    if(styleA((targetX,targetY)) return true;
-            else return false;
-}
-
-bool Knight::canMove(int targetX, int targetY) {
-    if(styleA(targetX,targetY) || styleB(targetX,targetY)) return true;
-    else return false;
-}
-
-bool Rook::canMove(int targetX, int targetY) {
-    if(styleA(targetX,targetY)) return true;
-    else return false;
-}
-
-bool Bishop::canMove(int targetX, int targetY) {
-    if(styleB(targetX,targetY)) return true;
-    else return false;
-}
-
-bool Queen::canMove(int targetX, int targetY) {
-    if(styleA(targetX,targetY)) return true;
-    else return false;
 }

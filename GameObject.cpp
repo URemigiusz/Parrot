@@ -58,6 +58,25 @@ void Figure::addHP(int hp) {
 }
 
 bool Board::canMove(int cordX, int cordY, int targetX, int targetY) {
+    GameObject *ten = operator[](cordX)[cordY];
+    if (ten->isEmpty() || ten->isObstacle()) return false;
+    auto *tenFig = dynamic_cast<Figure *>(ten);
+    const figType *type = tenFig->getFigType();
+    switch (*type) {
+        case PAWN:
+            return styleA(*tenFig, targetX, targetY);
+        case KNIGHT:
+            return (styleA(*tenFig, targetX, targetY) ||
+                    styleB(*tenFig, targetX, targetY));
+        case ROOK:
+            return styleA(*tenFig, targetX, targetY);
+        case BISHOP:
+            return styleB(*tenFig, targetX, targetY);
+        case QUEEN:
+            return styleA(*tenFig, targetX, targetY);
+        case KING:
+            return false; //not implemented
+    }
     /*
     double required = 0;
     
@@ -73,7 +92,6 @@ bool Board::canMove(int cordX, int cordY, int targetX, int targetY) {
 
     return required <= movement;
      */
-    return false; //not implemented
 }
 
 
