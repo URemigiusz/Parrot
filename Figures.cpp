@@ -1,4 +1,5 @@
 #include "Header.h"
+#include "Board.h"
 
 bool Pawn::canAttack(int cordX, int cordY, int targetX, int targetY)
 {
@@ -93,7 +94,7 @@ bool canAttack(const figType type, int cordX, int cordY, int targetX, int target
 
 
 //powinno się gdzieś dodać movePoints
-bool styleA(int targetX, int targetY) { //+
+bool Figure::styleA(int targetX, int targetY, Board &board) { //+
     int x = cordX;
     int y = cordY;
     int changedX = x - targetX;
@@ -101,30 +102,30 @@ bool styleA(int targetX, int targetY) { //+
 
     if(changedX > movePoints || changedY > movePoints) return 0;
 
-    if( changeX < 0 && y == targetY){ // poziomo lewo
+    if( changedX < 0 && y == targetY){ // poziomo lewo
         for(int i = 1; i <= changedX; i++){
-            if(Board[x-i][y] != /*EmptyField*/) return 0;
+            if(!board[x - i][y]->isEmpty()) return 0;
         }
     }
     else if(changedX > 0 && y == targetY){ //poziomo prawo
         for(int i = 1; i <= changedX; i++){
-            if(Board[x+i][y] != /*EmptyField*/) return 0;
+            if(board[x+i][y]->isEmpty()) return 0;
         }
     }
     else if(changedX == 0 && y < targetY){ // w gore
         for(int i = 1; i <= changedX; i++){
-            if(Board[x][y+i] != /*EmptyField*/) return 0;
+            if(board[x][y+i]->isEmpty()) return 0;
         }
     }
     else if(changedX == 0 && y > targetY){ //w dol
         for(int i = 1; i <= changedX; i++){
-            if(Board[x][y-i] != /*EmptyField*/) return 0;
+            if(board[x][y-i]->isEmpty()) return 0;
         }
     }
     else return true;
 }
 
-bool styleB(int targetX, int targetY){//x
+bool Figure::styleB(int targetX, int targetY,  Board &board){//x
     int x = cordX;
     int y = cordY;
     int changedX = x - targetX;
@@ -134,22 +135,22 @@ bool styleB(int targetX, int targetY){//x
 
     if(changedX < 0 && changedY > 0){ //lewy górny
         for(int i = 1; i <= changedX; i++){
-            if(Board[x-i][y+i] != /*EmptyField*/) return 0;
+            if(board[x-i][y+i]->isEmpty()) return 0;
         }
     }
     else if(changedX > 0 && changedY > 0){ //Prawy górny
         for(int i = 1; i <= changedX; i++){
-            if(Board[x+i][y+i] != /*EmptyField*/) return 0;
+            if(board[x+i][y+i]->isEmpty()) return 0;
         }
     }
     else if(changedX < 0 && changedY < 0){ //lewy dolny
         for(int i = 1; i <= changedX; i++){
-            if(Board[x-i][y-i] != /*EmptyField*/) return 0;
+            if(board[x-i][y-i]->isEmpty()) return 0;
         }
     }
     else if(changedX > 0 && changedY < 0){ //prawy górny
         for(int i = 1; i <= changedX; i++){
-            if(Board[x+i][y-i] != /*EmptyField*/) return 0;
+            if(board[x+i][y-i]->isEmpty()) return 0;
         }
     }
     else return true;
