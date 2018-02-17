@@ -155,3 +155,18 @@ bool Board::styleB(Figure &fig, int cordX, int cordY, int targetX, int targetY){
     }
     else return true;
 }
+
+bool Board::canAttack(int cordX, int cordY, int targetX, int targetY) {
+    //operator[](x)[y-i];
+    if(operator[](targetX)[targetY]->isEmpty()) {
+        error("Nie mozesz zaatakowac pustego pola");
+        return false;
+    }
+    if(operator[](targetX)[targetY]->isObstacle()){
+        error("Nie mozesz atakowac przeszkody");
+        return false;
+    }
+    else{
+        return operator[](targetX)[targetY]->canAttack(cordX, cordY, targetX,targetY);
+    }
+}
