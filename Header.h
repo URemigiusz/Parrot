@@ -52,7 +52,7 @@ using GameObjectPtr = GameObject*;
 
 class EmptyField : public GameObject {
 public:
-	EmptyField() {};
+	EmptyField() = default;;
 	const std::string* name() override {
 		return &emptyFieldNameString;
 	}
@@ -80,11 +80,12 @@ public:
 	bool canAttack(int targetX, int targetY) override {
 		return false;
 	};
-	void addHP(int hp) {} //bo mi sie nie chce teraz castowac
+	void addHP(int hp) override {} //bo mi sie nie chce teraz castowac
     bool isEmpty() override {
         return false;
     }
-    virtual bool isObstacle(){
+
+	bool isObstacle() override {
         return true;
     }
 };
@@ -114,10 +115,10 @@ public:
 		return &figNames[type];
 	}
 
-	void addHP(int hp);  // Zmienia HP obiektu o hp, znaczy dodaje tyle HP
+	void addHP(int hp) override;  // Zmienia HP obiektu o hp, znaczy dodaje tyle HP
     //bool canMove(int targetX, int targetY);
 	//bool canMove(int targetX, int targetY, Board &board);
-    virtual bool canAttack(int targetX, int targetY) = 0;
+	bool canAttack(int targetX, int targetY) override = 0;
     bool isEmpty() override {
         return false;
     }
