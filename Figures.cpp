@@ -1,6 +1,7 @@
 #include "Header.h"
+#include "Board.h"
 
-bool Pawn::canAttack(int cordX, int cordY, int targetX, int targetY)
+bool Pawn::canThisAttack(int cordX, int cordY, int targetX, int targetY)
 {
     int x = cordX;
     int y = cordY;
@@ -9,11 +10,11 @@ bool Pawn::canAttack(int cordX, int cordY, int targetX, int targetY)
            targetX == x - 1 && targetY == y + 1 ||
            targetX == x - 1 && targetY == y - 1;
 }
-bool Pawn::canAttack(int targetX, int targetY) {
-    return Pawn::canAttack(cordX, cordY, targetX, targetY);
+bool Pawn::canAttack(int cordX, int cordY, int targetX, int targetY) {
+    return Pawn::canThisAttack(cordX, cordY, targetX, targetY);
 }
 
-bool Knight::canAttack(int cordX, int cordY, int targetX, int targetY)
+bool Knight::canThisAttack(int cordX, int cordY, int targetX, int targetY)
 {
     int x = cordX;
     int y = cordY;
@@ -22,42 +23,42 @@ bool Knight::canAttack(int cordX, int cordY, int targetX, int targetY)
            y == targetY && abs(targetX - x) == 1 ||
            x == targetX && abs(targetY - y) == 1;
 }
-bool Knight::canAttack(int targetX, int targetY) {
-    return Knight::canAttack(cordX, cordY, targetX, targetY);
+bool Knight::canAttack(int cordX, int cordY, int targetX, int targetY) {
+    return Knight::canThisAttack(cordX, cordY, targetX, targetY);
 }
 
-bool Rook::canAttack(int cordX, int cordY, int targetX, int targetY)
+bool Rook::canThisAttack(int cordX, int cordY, int targetX, int targetY)
 {
     int x = cordX;
     int y = cordY;
     return targetX == x && abs(y - targetY) <= 3 ||
            targetY == y && abs(x - targetX) <= 3;
 }
-bool Rook::canAttack(int targetX, int targetY) {
-    return Rook::canAttack(cordX, cordY, targetX, targetY);
+bool Rook::canAttack(int cordX, int cordY, int targetX, int targetY) {
+    return Rook::canThisAttack(cordX, cordY, targetX, targetY);
 }
 
-bool Bishop::canAttack(int cordX, int cordY, int targetX, int targetY)
+bool Bishop::canThisAttack(int cordX, int cordY, int targetX, int targetY)
 {
     int x = abs(cordX - targetX);
     int y = abs(cordY - targetY);
     return x == y && x <= 3 && y <= 3;
 }
-bool Bishop::canAttack(int targetX, int targetY) {
-    return Bishop::canAttack(cordX, cordY, targetX, targetY);
+bool Bishop::canAttack(int cordX, int cordY, int targetX, int targetY) {
+    return Bishop::canThisAttack(cordX, cordY, targetX, targetY);
 }
 
-bool Queen::canAttack(int cordX, int cordY, int targetX, int targetY)
+bool Queen::canThisAttack(int cordX, int cordY, int targetX, int targetY)
 {
     int x = abs(cordX - targetX);
     int y = abs(cordY - targetY);
     return x == y && x <= 3;
 }
-bool Queen::canAttack(int targetX, int targetY) {
-    return Queen::canAttack(cordX, cordY, targetX, targetY);
+bool Queen::canAttack(int cordX, int cordY, int targetX, int targetY) {
+    return Queen::canThisAttack(cordX, cordY, targetX, targetY);
 }
 
-bool King::canAttack(int cordX, int cordY, int targetX, int targetY)
+bool King::canThisAttack(int cordX, int cordY, int targetX, int targetY)
 {
     int x = cordX;
     int y = cordY;
@@ -66,25 +67,91 @@ bool King::canAttack(int cordX, int cordY, int targetX, int targetY)
            targetX == x - 1 && targetY == y + 1 ||
            targetX == x - 1 && targetY == y - 1;
 }
-bool King::canAttack(int targetX, int targetY) {
-    return King::canAttack(cordX, cordY, targetX, targetY);
+bool King::canAttack(int cordX, int cordY, int targetX, int targetY) {
+    return King::canThisAttack(cordX, cordY, targetX, targetY);
 }
 
-bool canAttack(const figType type, int cordX, int cordY, int targetX, int targetY) {
+bool canThisAttack(const figType type, int cordX, int cordY, int targetX, int targetY) {
     switch (type) {
         case PAWN:
-            return Pawn::canAttack(cordX, cordY, targetX, targetY);
+            return Pawn::canThisAttack(cordX, cordY, targetX, targetY);
         case KNIGHT:
-            return Knight::canAttack(cordX, cordY, targetX, targetY);
+            return Knight::canThisAttack(cordX, cordY, targetX, targetY);
         case BISHOP:
-            return Bishop::canAttack(cordX, cordY, targetX, targetY);
+            return Bishop::canThisAttack(cordX, cordY, targetX, targetY);
         case ROOK:
-            return Rook::canAttack(cordX, cordY, targetX, targetY);
+            return Rook::canThisAttack(cordX, cordY, targetX, targetY);
         case QUEEN:
-            return Queen::canAttack(cordX, cordY, targetX, targetY);
+            return Queen::canThisAttack(cordX, cordY, targetX, targetY);
         case KING:
-            return Queen::canAttack(cordX, cordY, targetX, targetY);
+            return Queen::canThisAttack(cordX, cordY, targetX, targetY);
         default:
             return false;
     }
+}
+
+
+
+
+//powinno się gdzieś dodać movePoints
+bool Board::styleA(Figure &fig, int cordX, int cordY, int targetX, int targetY) { //+
+    int x = cordX;
+    int y = cordY;
+    int changedX = x - targetX;
+    int changedY = y - targetY;
+
+    if(changedX > fig.movePoints || changedY > fig.movePoints) return false;
+
+    if( changedX < 0 && y == targetY){ // poziomo lewo
+        for(int i = 1; i <= changedX; i++){
+            if(!operator[](x - i)[y]->isEmpty()) return false;
+        }
+    }
+    else if(changedX > 0 && y == targetY){ //poziomo prawo
+        for(int i = 1; i <= changedX; i++){
+            if(operator[](x+i)[y]->isEmpty()) return false;
+        }
+    }
+    else if(changedX == 0 && y < targetY){ // w gore
+        for(int i = 1; i <= changedX; i++){
+            if(operator[](x)[y+i]->isEmpty()) return false;
+        }
+    }
+    else if(changedX == 0 && y > targetY){ //w dol
+        for(int i = 1; i <= changedX; i++){
+            if(operator[](x)[y-i]->isEmpty()) return false;
+        }
+    }
+    else return true;
+}
+
+bool Board::styleB(Figure &fig, int cordX, int cordY, int targetX, int targetY){//x
+    int x = cordX;
+    int y = cordY;
+    int changedX = x - targetX;
+    int changedY = y - targetY;
+
+    if(changedX > fig.movePoints || changedY > fig.movePoints) return false;
+
+    if(changedX < 0 && changedY > 0){ //lewy górny
+        for(int i = 1; i <= changedX; i++){
+            if(operator[](x-i)[y+i]->isEmpty()) return false;
+        }
+    }
+    else if(changedX > 0 && changedY > 0){ //Prawy górny
+        for(int i = 1; i <= changedX; i++){
+            if(operator[](x+i)[y+i]->isEmpty()) return false;
+        }
+    }
+    else if(changedX < 0 && changedY < 0){ //lewy dolny
+        for(int i = 1; i <= changedX; i++){
+            if(operator[](x-i)[y-i]->isEmpty()) return false;
+        }
+    }
+    else if(changedX > 0 && changedY < 0){ //prawy górny
+        for(int i = 1; i <= changedX; i++){
+            if(operator[](x+i)[y-i]->isEmpty()) return false;
+        }
+    }
+    else return true;
 }
