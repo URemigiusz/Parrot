@@ -10,7 +10,7 @@ Główna implementacja w języku C++11, nawet już się kompiluje od PR #9. I s�
 - [Adam Wieczarek (@AWieczarek)](github.com/AWieczarek/Parrot) — programista […], kl. 1e IV LO Toruń
 - [Jakub Kuziemski (@JakubKivi)](github.com/JakubKivi/Parrot) — programista  […], kl. 1e IV LO Toruń
 - [Jakub Delicat (@delipl)](github.com/delipl/Parrot) — programista C++, kl. 1e IV LO Toruń
-- [Paweł Knut](https://www.facebook.com/profile.php?id=100011873343122) — programista […], kl. 1e IV LO Toruń
+- [Paweł Knut](https://www.facebook.com/profile.php?id=100011873343122) — programista […], kl. 1e IV LO Toruń 
 - [Zuzia Kaczorek](https://www.facebook.com/zuzia.kaczorek.7) — rysowniczka, część artystyczna jeszcze do przyłączenia do części programistycznej
 - […]
 - [Michał Krzysztof Feiler (@ArchieT)](github.com/ArchieT/Parrot) — konsultant od Gita oraz inżynierii oprogramowania, student I roku na WMiI UMK w Toruniu, absolwent klasy uniwersyteckiej (_E_) IV LO Toruń
