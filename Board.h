@@ -10,7 +10,8 @@ private:
 
 public:
     Line() = default;
-    Line(unsigned size);
+
+    explicit Line(unsigned size);
 
     GameObject* &operator[](unsigned index);
     ~Line();
@@ -47,6 +48,8 @@ public:
     bool canMove(int cordX, int cordY, int targetX, int targetY);
 
     void add_rand_obstacles(/*int x, int y,*/ const std::function<bool(int, int)> &obs);
+    bool styleA(Figure &fig, int cordX, int cordY, int targetX, int targetY);
+    bool styleB(Figure &fig, int cordX, int cordY, int targetX, int targetY);
 };
 
 //Board board;

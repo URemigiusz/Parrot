@@ -19,8 +19,8 @@ int main() {
     do {
         player = roundNumber % 2 + 1 != 0;
         std::cout << "Tura gracza " << player << std::endl;
-        attacked = 0;
-        moved = 0;
+        attacked = false;
+        moved = false;
 //===========================================CHECKING============================================//
 
         std::cout << "Jakie pola chcesz sprawdzić        x-nie chce już sprawdzać";
@@ -75,7 +75,7 @@ int main() {
 
             if(board.canMove(positionX, positionY, targetX, targetY)){         //drogi remku z przyszłości wiemy że to inaczej
                 move(); // kiedys się zrobi
-                moved=1;
+                moved= true;
             }
             else {
                 std::cout<<"Nie mozesz sie tak ruszyc!" << std::endl;
@@ -120,9 +120,9 @@ int main() {
             }
             else error("Zły input");
 
-            if(board[positionX][positionY]->canAttack(targetX, targetY)){    //drogi remku z przyszłości wiemy że to inaczej
+            if(board[positionX][positionY]->canAttack(positionX, positionY, targetX, targetY)){    //drogi remku z przyszłości wiemy że to inaczej
                 board[positionX][positionY]->addHP(123456/*placeholder*/); // kiedys się zrobi żeby atakowało
-                moved=1;
+                moved= true;
             }
              else {
                 std::cout<<"Nie mozesz sie tak ruszyc!" << std::endl;
