@@ -12,7 +12,7 @@ static int positionX, positionY, targetX, targetY;
 void move() {}
 
 int main() {
-    Board board = GetFromFile();
+    auto board = GetFromString("brd=8x8;");//File();
 
     //setlocale( LC_ALL, "pl_PL" );   nie weim jak, ale zostawiam żeb wiedzieć że chcemy polskie znaki
 

@@ -12,7 +12,7 @@ TEST_CASE("testujemy dostep0 w nowym Line1", "[board line reverse]") {
     REQUIRE(l[0]);
 }
 
-TEST_CASE("GetFromString brd=8x8", "[board string]") {
-    std::string the = "brd=8x8";
+TEST_CASE("GetFromString brd=8x8;", "[board string]") {
+    std::string the = "brd=8x8;";
     REQUIRE(GetFromString(the).operator[](0)[0]!=nullptr);
 }
