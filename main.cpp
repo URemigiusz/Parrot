@@ -16,6 +16,8 @@ void move() {}
 int main() {
     //openFile(); paweł pisze wczytywanie wszystkoeeeeego z pliku
 
+    //setlocale( LC_ALL, "pl_PL" );   nie weim jak, ale zostawiam żeb wiedzieć że chcemy polskie znaki
+
     do {
         player = roundNumber % 2 + 1 != 0;
         std::cout << "Tura gracza " << player << std::endl;
@@ -23,7 +25,7 @@ int main() {
         moved = false;
 //===========================================CHECKING============================================//
 
-        std::cout << "Jakie pola chcesz sprawdzić        x-nie chce już sprawdzać";
+        std::cout << "Jakie pola chcesz sprawdzic: \t \t x-nie chce juz sprawdzac" <<std::endl;
         do {
             std::cin >> input;
             if (input.size() == 2) {
@@ -121,8 +123,8 @@ int main() {
             else error("Zły input");
 
             if(board[positionX][positionY]->canAttack(positionX, positionY, targetX, targetY)){    //drogi remku z przyszłości wiemy że to inaczej
-                board[positionX][positionY]->addHP(123456/*placeholder*/); // kiedys się zrobi żeby atakowało
-                moved= true;
+
+               attacked = true;
             }
              else {
                 std::cout<<"Nie mozesz sie tak ruszyc!" << std::endl;
