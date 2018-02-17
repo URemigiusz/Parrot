@@ -53,4 +53,7 @@ public:
     bool canAttack(int cordX, int cordY, int targetX, int targetY);
 };
 
-Board *GetFromFile();
+Board GetFromStream(std::istream& theStream);
+Board GetFromString(const std::string& theString);
+Board GetFromFile(const std::string& fileName);
+Board GetFromFile();

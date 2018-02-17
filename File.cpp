@@ -2,7 +2,9 @@
 #include "Header.h"
 #include "Board.h"
 
-Board *GetFromStream(std::istream& file) {
+enum OurFileError { FILE_NOT_GOOD };
+
+Board GetFromStream(std::istream& file) {
 
     // Sprawdzenie, czy plik istnieje
 
@@ -135,15 +137,15 @@ Board *GetFromStream(std::istream& file) {
         //tutaj tworzymy figure...
 
     }
-    return &board;
+    return board;
 }
 
-Board *GetFromString(const std::string& theString) {
+Board GetFromString(const std::string& theString) {
     std::istringstream s(theString);
     return GetFromStream(s);
 }
 
-Board *GetFromFile(const std::string& fileName) {
+Board GetFromFile(const std::string& fileName) {
     std::fstream file;
     file.open(fileName, std::ios::in);
 
@@ -151,7 +153,7 @@ Board *GetFromFile(const std::string& fileName) {
 
     if (!file.good()) {
         error("File is not Exist!!!");
-        return nullptr;
+        throw FILE_NOT_GOOD;
     } else {
         auto r = GetFromStream(file);
         file.close();
@@ -159,6 +161,6 @@ Board *GetFromFile(const std::string& fileName) {
     }
 }
 
-Board *GetFromFile() {
+Board GetFromFile() {
     return GetFromFile("Save.txt");
 }
