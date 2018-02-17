@@ -1,9 +1,9 @@
 #include "Header.h"
 #include "Board.h"
 
-static bool win          = false;
-static bool player       = false;
-static int roundNumber         = 0;
+static bool win = false;
+static bool player = false;
+static int roundNumber = 0;
 static bool attacked;
 static bool moved;
 static std::string input;
@@ -23,16 +23,16 @@ int main() {
         moved = false;
 //===========================================CHECKING============================================//
 
-        std::cout << "Jakie pola chcesz sprawdzic: \t \t x-nie chce juz sprawdzac" <<std::endl;
+        std::cout << "Jakie pola chcesz sprawdzic: \t \t x-nie chce juz sprawdzac" << std::endl;
         do {
             std::cin >> input;
             if (input.size() == 2) {
                 positionX = reverse(input[1], board.getY());
                 positionY = toInt(input[0], board.getX());
-            }else if (input.size() == 3) {
+            } else if (input.size() == 3) {
                 positionX = reverse(input[1] * 10 + input[2], board.getY());
                 positionY = toInt(input[0], board.getX());
-            }else error("Zbyt duzy input");
+            } else error("Zbyt duzy input");
 
             board[positionX][positionY]->reveal();
 
@@ -41,7 +41,7 @@ int main() {
         for (int i = 0; i < 1; i++) {     //to  sie robi raz ale mozna tu wracac :v
             std::cout << "Czy chcesz sie ruszyc y/n : " << std::endl;
             std::cin >> input;
-            if (input =="y") {
+            if (input == "y") {
                 std::cout << "Wybierz figure                     exit <-wyjdz " << std::endl;
                 std::cin >> input;
                 if (input.size() == 2) {
@@ -55,10 +55,9 @@ int main() {
                     continue;
                 } else error("Zły input");
 
-            }
-            else if(input=="n"){
+            } else if (input == "n") {
                 break;
-            }else error("Zbyt duzy input");
+            } else error("Zbyt duzy input");
 
             std::cout << "Wybierz cel :                          exit-wyjscie" << std::endl;
             std::cin >> input;
@@ -73,12 +72,12 @@ int main() {
                 continue;
             } else error("Zły input");
 
-            if(board.canMove(positionX, positionY, targetX, targetY)){         //drogi remku z przyszłości wiemy że to inaczej
+            if (board.canMove(positionX, positionY, targetX,
+                              targetY)) {         //drogi remku z przyszłości wiemy że to inaczej
                 move(); // kiedys się zrobi
-                moved= true;
-            }
-            else {
-                std::cout<<"Nie mozesz sie tak ruszyc!" << std::endl;
+                moved = true;
+            } else {
+                std::cout << "Nie mozesz sie tak ruszyc!" << std::endl;
                 i--;
                 continue;
             }
@@ -102,7 +101,7 @@ int main() {
                     continue;
                 } else error("Zły input");
 
-            }else if(input=="n") {
+            } else if (input == "n") {
                 break;
             } else error("Zbyt duzy input");
 
@@ -117,25 +116,24 @@ int main() {
             } else if (input == "exit") {
                 i--;
                 continue;
-            }
-            else error("Zły input");
-            if(board.canAttack(positionX, positionY, targetX, targetY)){       //drogi remku z przyszłości wiemy że to inaczej
-                auto * fig = (Figure *) board[positionX][positionY];
-                auto * tar = (Figure *) board[targetX][targetY];
+            } else error("Zły input");
+            if (board.canAttack(positionX, positionY, targetX,
+                                targetY)) {       //drogi remku z przyszłości wiemy że to inaczej
+                auto *fig = (Figure *) board[positionX][positionY];
+                auto *tar = (Figure *) board[targetX][targetY];
                 if (setHP(fig->figureDMG, tar, player)) win = true;             //zabicie króla kończy grę
                 else attacked = true;
-            }
-             else {
-                std::cout<<"Nie mozesz sie tak ruszyc!" << std::endl;
+            } else {
+                std::cout << "Nie mozesz sie tak ruszyc!" << std::endl;
                 i--;
                 continue;
             }
 
         }
 
-        roundNumber ++;
+        roundNumber++;
 
-    }while(!win);
+    } while (!win);
     std::cin.get();
 }
 
