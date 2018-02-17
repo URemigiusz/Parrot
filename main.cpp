@@ -120,7 +120,7 @@ int main() {
             }
             else error("Zły input");
 
-            if(board[positionX][positionY]->canAttack(targetX, targetY)){    //drogi remku z przyszłości wiemy że to inaczej
+            if(board[positionX][positionY]->canAttack(positionX, positionY, targetX, targetY)){    //drogi remku z przyszłości wiemy że to inaczej
                 board[positionX][positionY]->addHP(123456/*placeholder*/); // kiedys się zrobi żeby atakowało
                 moved=1;
             }

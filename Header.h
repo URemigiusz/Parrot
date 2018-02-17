@@ -33,10 +33,8 @@ public:
     //GameObject(std::string name = "uninitialized");
     virtual void reveal();
 
-	int cordX{};
-	int cordY{};
 	//virtual bool canMove(int targetX, int targetY, Board &board)=0;
-	virtual bool canAttack(int targetX, int targetY) = 0;
+	virtual bool canAttack(int cordX, int cordY, int targetX, int targetY) = 0;
 	virtual void addHP(int hp) = 0; // bo mi sie nie chce teraz castowac
     virtual bool isEmpty(){ //sprawdzanie czy jest puste
         return false;
@@ -59,7 +57,7 @@ public:
 	//bool canMove(int targetX, int targetY, Board &board) override {
 	//	return false;
 	//}
-	bool canAttack(int targetX, int targetY) override {
+	bool canAttack(int cordX, int cordY, int targetX, int targetY) override {
 		return false;
 	};
 	void addHP(int hp) override {} //bo mi sie nie chce teraz castowac
@@ -77,7 +75,7 @@ public:
 	//bool canMove(int targetX, int targetY, Board &board) override {
 	//	return false;
 	//}
-	bool canAttack(int targetX, int targetY) override {
+	bool canAttack(int cordX, int cordY, int targetX, int targetY) override {
 		return false;
 	};
 	void addHP(int hp) override {} //bo mi sie nie chce teraz castowac
@@ -116,9 +114,9 @@ public:
 	}
 
 	void addHP(int hp) override;  // Zmienia HP obiektu o hp, znaczy dodaje tyle HP
-    //bool canMove(int targetX, int targetY);
+	//bool canMove(int targetX, int targetY);
 	//bool canMove(int targetX, int targetY, Board &board);
-	bool canAttack(int targetX, int targetY) override = 0;
+	//virtual bool canAttack(int cordX, int cordY, int targetX, int targetY) = 0;
     bool isEmpty() override {
         return false;
     }
@@ -136,8 +134,8 @@ public:
 	Pawn(bool owner, int HP) : Figure(PAWN, owner, HP) {}
 	Pawn(bool owner, int HP, int dmg)
 			: Figure(PAWN, owner, HP, dmg) {}
-	bool canAttack(int targetX, int targetY) override;
-	static bool canAttack(int cordX, int cordY, int targetX, int targetY);
+	bool canAttack(int cordX, int cordY, int targetX, int targetY) override;
+	static bool canThisAttack(int cordX, int cordY, int targetX, int targetY);
 };
 
 class Knight : public Figure  //koń
@@ -149,8 +147,8 @@ public:
 	Knight(bool owner, int HP, int dmg)
 			: Figure(KNIGHT, owner, HP, dmg) {}
 
-	bool canAttack(int targetX, int targetY) override;
-	static bool canAttack(int cordX, int cordY, int targetX, int targetY);
+	bool canAttack(int cordX, int cordY, int targetX, int targetY) override;
+	static bool canThisAttack(int cordX, int cordY, int targetX, int targetY);
 };
 
 class Rook : public Figure //wieża
@@ -162,8 +160,8 @@ public:
 	Rook(bool owner, int HP, int dmg)
 			: Figure(ROOK, owner, HP, dmg) {}
 
-	bool canAttack(int targetX, int targetY) override;
-	static bool canAttack(int cordX, int cordY, int targetX, int targetY);
+	bool canAttack(int cordX, int cordY, int targetX, int targetY) override;
+	static bool canThisAttack(int cordX, int cordY, int targetX, int targetY);
 };
 
 class Bishop : public Figure  //goniec
@@ -175,8 +173,8 @@ public:
 	Bishop(bool owner, int HP, int dmg)
 			: Figure(BISHOP, owner, HP, dmg) {}
 
-	bool canAttack(int targetX, int targetY) override;
-	static bool canAttack(int cordX, int cordY, int targetX, int targetY);
+	bool canAttack(int cordX, int cordY, int targetX, int targetY) override;
+	static bool canThisAttack(int cordX, int cordY, int targetX, int targetY);
 };
 
 class Queen : public Figure  //królowa
@@ -187,8 +185,8 @@ public:
 	Queen(bool owner, int HP) : Figure(QUEEN, owner, HP) {}
 	Queen(bool owner, int HP, int dmg)
 			: Figure(QUEEN, owner, HP, dmg) {}
-    bool canAttack(int targetX, int targetY) override;
-	static bool canAttack(int cordX, int cordY, int targetX, int targetY);
+    bool canAttack(int cordX, int cordY, int targetX, int targetY) override;
+	static bool canThisAttack(int cordX, int cordY, int targetX, int targetY);
 };
 
 //commit testowy
@@ -202,7 +200,8 @@ public:
 	King(bool owner, int HP, int dmg)
 			: Figure(KING, owner, HP, dmg) {}
 
-	bool canAttack(int targetX, int targetY) override;
-	static bool canAttack(int cordX, int cordY, int targetX, int targetY);
+	bool canAttack(int cordX, int cordY, int targetX, int targetY) override;
+	static bool canThisAttack(int cordX, int cordY, int targetX, int targetY);
 };
 
+bool canThisAttack(figType type, int cordX, int cordY, int targetX, int targetY);

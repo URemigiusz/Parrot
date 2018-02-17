@@ -50,7 +50,7 @@ void Figure::addHP(int hp) {
     figureHP += hp;
     if (figureHP < 0) {
         std::ostringstream stringStream;
-        stringStream << "Z pola" << cordX << " " << cordY <<
+        stringStream << //"Z pola" << cordX << " " << cordY <<
                      "zniknęła figura" << name() << std::endl;
         log(stringStream.str());
     }
@@ -64,16 +64,16 @@ bool Board::canMove(int cordX, int cordY, int targetX, int targetY) {
     const figType *type = tenFig->getFigType();
     switch (*type) {
         case PAWN:
-            return styleA(*tenFig, targetX, targetY);
+            return styleA(*tenFig, cordX, cordY, targetX, targetY);
         case KNIGHT:
-            return (styleA(*tenFig, targetX, targetY) ||
-                    styleB(*tenFig, targetX, targetY));
+            return (styleA(*tenFig, cordX, cordY, targetX, targetY) ||
+                    styleB(*tenFig, cordX, cordY, targetX, targetY));
         case ROOK:
-            return styleA(*tenFig, targetX, targetY);
+            return styleA(*tenFig, cordX, cordY, targetX, targetY);
         case BISHOP:
-            return styleB(*tenFig, targetX, targetY);
+            return styleB(*tenFig, cordX, cordY, targetX, targetY);
         case QUEEN:
-            return styleA(*tenFig, targetX, targetY);
+            return styleA(*tenFig, cordX, cordY, targetX, targetY);
         case KING:
             return false; //not implemented
     }

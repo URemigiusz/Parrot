@@ -22,5 +22,5 @@ set(TESTING_FILES
 	test/tests.cpp
 	test/BoardTest.cpp)
 
-add_executable(Parrot ${MAIN_FILES})
+add_executable(ParrotMain ${MAIN_FILES})
 add_executable(ParrotTest ${TESTING_FILES})
