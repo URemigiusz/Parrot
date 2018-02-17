@@ -1,0 +1,3 @@
+brd=[wartosc]x[wartosc];
+fld=[wartosc Y],[wartosc X],[obiekt],[nazwa],[hp];
+itd.
