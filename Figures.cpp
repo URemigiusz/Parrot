@@ -100,26 +100,26 @@ bool Board::styleA(Figure &fig, int cordX, int cordY, int targetX, int targetY) 
     int changedX = x - targetX;
     int changedY = y - targetY;
 
-    if(changedX > fig.movePoints || changedY > fig.movePoints) return 0;
+    if(changedX > fig.movePoints || changedY > fig.movePoints) return false;
 
     if( changedX < 0 && y == targetY){ // poziomo lewo
         for(int i = 1; i <= changedX; i++){
-            if(!operator[](x - i)[y]->isEmpty()) return 0;
+            if(!operator[](x - i)[y]->isEmpty()) return false;
         }
     }
     else if(changedX > 0 && y == targetY){ //poziomo prawo
         for(int i = 1; i <= changedX; i++){
-            if(operator[](x+i)[y]->isEmpty()) return 0;
+            if(operator[](x+i)[y]->isEmpty()) return false;
         }
     }
     else if(changedX == 0 && y < targetY){ // w gore
         for(int i = 1; i <= changedX; i++){
-            if(operator[](x)[y+i]->isEmpty()) return 0;
+            if(operator[](x)[y+i]->isEmpty()) return false;
         }
     }
     else if(changedX == 0 && y > targetY){ //w dol
         for(int i = 1; i <= changedX; i++){
-            if(operator[](x)[y-i]->isEmpty()) return 0;
+            if(operator[](x)[y-i]->isEmpty()) return false;
         }
     }
     else return true;
@@ -131,26 +131,26 @@ bool Board::styleB(Figure &fig, int cordX, int cordY, int targetX, int targetY){
     int changedX = x - targetX;
     int changedY = y - targetY;
 
-    if(changedX > fig.movePoints || changedY > fig.movePoints) return 0;
+    if(changedX > fig.movePoints || changedY > fig.movePoints) return false;
 
     if(changedX < 0 && changedY > 0){ //lewy górny
         for(int i = 1; i <= changedX; i++){
-            if(operator[](x-i)[y+i]->isEmpty()) return 0;
+            if(operator[](x-i)[y+i]->isEmpty()) return false;
         }
     }
     else if(changedX > 0 && changedY > 0){ //Prawy górny
         for(int i = 1; i <= changedX; i++){
-            if(operator[](x+i)[y+i]->isEmpty()) return 0;
+            if(operator[](x+i)[y+i]->isEmpty()) return false;
         }
     }
     else if(changedX < 0 && changedY < 0){ //lewy dolny
         for(int i = 1; i <= changedX; i++){
-            if(operator[](x-i)[y-i]->isEmpty()) return 0;
+            if(operator[](x-i)[y-i]->isEmpty()) return false;
         }
     }
     else if(changedX > 0 && changedY < 0){ //prawy górny
         for(int i = 1; i <= changedX; i++){
-            if(operator[](x+i)[y-i]->isEmpty()) return 0;
+            if(operator[](x+i)[y-i]->isEmpty()) return false;
         }
     }
     else return true;

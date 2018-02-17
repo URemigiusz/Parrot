@@ -9,8 +9,8 @@
 #include <fstream>
 
 
-const bool WHITE = 0;
-const bool BLACK = 1;
+const bool WHITE = false;
+const bool BLACK = true;
 enum figType {
 	PAWN, KNIGHT, BISHOP, ROOK, QUEEN, KING
 };
