@@ -14,6 +14,8 @@ void move() {}
 int main() {
     Board* board = GetFromFile();
 
+    //setlocale( LC_ALL, "pl_PL" );   nie weim jak, ale zostawiam żeb wiedzieć że chcemy polskie znaki
+
     do {
         player = roundNumber % 2 + 1 != 0;
         std::cout << "Tura gracza " << player << std::endl;
@@ -21,7 +23,7 @@ int main() {
         moved = false;
 //===========================================CHECKING============================================//
 
-        std::cout << "Jakie pola chcesz sprawdzić        x-nie chce już sprawdzać";
+        std::cout << "Jakie pola chcesz sprawdzic: \t \t x-nie chce juz sprawdzac" <<std::endl;
         do {
             std::cin >> input;
             if (input.size() == 2) {
@@ -117,10 +119,11 @@ int main() {
                 continue;
             }
             else error("Zły input");
-
-            if((*board)[positionX][positionY]->canAttack(positionX, positionY, targetX, targetY)){    //drogi remku z przyszłości wiemy że to inaczej
-                (*board)[positionX][positionY]->addHP(123456/*placeholder*/); // kiedys się zrobi żeby atakowało
-                moved= true;
+            if(board->canAttack(positionX, positionY, targetX, targetY)){       //drogi remku z przyszłości wiemy że to inaczej
+                auto * fig = (Figure *) (*board)[positionX][positionY];
+                auto * tar = (Figure *) (*board)[targetX][targetY];
+                if (setHP(fig->figureDMG, tar, player)) win = true;             //zabicie króla kończy grę
+                else attacked = true;
             }
              else {
                 std::cout<<"Nie mozesz sie tak ruszyc!" << std::endl;
