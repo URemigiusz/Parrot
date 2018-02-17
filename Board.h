@@ -53,4 +53,4 @@ public:
     bool canAttack(int cordX, int cordY, int targetX, int targetY);
 };
 
-//Board board;
+Board *GetFromFile();
