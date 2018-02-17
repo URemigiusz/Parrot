@@ -162,5 +162,5 @@ Board GetFromFile(const std::string& fileName) {
 }
 
 Board GetFromFile() {
-    return GetFromFile("Save.txt");
+    return GetFromFile("save.txt");
 }
