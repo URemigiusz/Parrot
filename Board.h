@@ -52,4 +52,4 @@ public:
     bool styleB(Figure &fig, int cordX, int cordY, int targetX, int targetY);
 };
 
-//Board board;
+Board *GetFromFile();

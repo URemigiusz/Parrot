@@ -23,7 +23,7 @@ static const std::string obstacleNameString = "Obstacle";
 
 inline void error(const std::string &message);
 int toInt(char c, int x);
-int reverse(unsigned x, int y);
+int reverse(char x, int y);
 
 
 class GameObject{

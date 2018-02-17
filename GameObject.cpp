@@ -20,8 +20,9 @@ int toInt(char c, int x) {
     }
 }
 
-int reverse(unsigned x, int y)  //dostaje input i wielkosc planszy
+int reverse(char c, int y)  //dostaje input i wielkosc planszy
 {
+    int x = c - '1';
     if (x > y /*board.getY()*/) //jesli ziomek wywalil input poza plansze to przypal
         error("reverse error");
 
