@@ -1,3 +1,4 @@
+#include <sstream>
 #include "Header.h"
 #include "Board.h"
 
@@ -135,6 +136,11 @@ Board *GetFromStream(std::istream& file) {
 
     }
     return &board;
+}
+
+Board *GetFromString(const std::string& theString) {
+    std::istringstream s(theString);
+    return GetFromStream(s);
 }
 
 Board *GetFromFile(const std::string& fileName) {
