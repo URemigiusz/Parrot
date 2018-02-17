@@ -15,7 +15,7 @@ GameObject* &Line::operator[](unsigned index)
 }
 
 
-Board::Board(unsigned x=8, unsigned y=8)
+Board::Board(unsigned x/*=8*/, unsigned y/*=8*/)
 :X(x), Y(y)
 {
     Rows = new Line[X];
