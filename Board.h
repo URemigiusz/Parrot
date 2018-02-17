@@ -10,7 +10,8 @@ private:
 
 public:
     Line() = default;
-    Line(unsigned size);
+
+    explicit Line(unsigned size);
 
     GameObject* &operator[](unsigned index);
     ~Line();
