@@ -1,0 +1,2 @@
+Implementacja getCord'ów
+wczytywanie wszystkiego z plików
