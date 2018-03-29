@@ -50,6 +50,10 @@ public:
     void add_rand_obstacles(/*int x, int y,*/ const std::function<bool(int, int)> &obs);
     bool styleA(Figure &fig, int cordX, int cordY, int targetX, int targetY);
     bool styleB(Figure &fig, int cordX, int cordY, int targetX, int targetY);
+    bool canAttack(int cordX, int cordY, int targetX, int targetY);
 };
 
-Board *GetFromFile();
+Board GetFromStream(std::istream& theStream);
+Board GetFromString(const std::string& theString);
+Board GetFromFile(const std::string& fileName);
+Board GetFromFile();
