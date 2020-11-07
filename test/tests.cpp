@@ -11,3 +11,13 @@ TEST_CASE("testujemy figury", "[fig]") {
     Figure* pawn = new Pawn(WHITE);
     REQUIRE(pawn->figureDMG>0);
 }
+
+TEST_CASE("sprawdzamy czy PAWN jest formatowany jako 0", "[figtype string]") {
+    std::ostringstream str;
+    str << PAWN;
+    REQUIRE(str.str()=="0");
+}
+
+TEST_CASE("sprawdzamy czy enumy działają jako indeks figNames", "[figtype string fignames]") {
+    REQUIRE(figNames[PAWN]=="Pionek");
+}

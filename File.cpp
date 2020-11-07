@@ -1,18 +1,10 @@
+#include <sstream>
 #include "Header.h"
 #include "Board.h"
 
-Board *GetFromFile()
-{
-    std::fstream file;
-    file.open("Save.txt",std::ios::in);
+enum OurFileError { FILE_NOT_GOOD };
 
-    // Otwarcie pliku
-
-    if(!file.good())
-    {
-        error("File is not Exist!!!");
-        return nullptr;
-    }
+Board GetFromStream(std::istream& file) {
 
     // Sprawdzenie, czy plik istnieje
 
@@ -145,8 +137,30 @@ Board *GetFromFile()
         //tutaj tworzymy figure...
 
     }
+    return board;
+}
 
+Board GetFromString(const std::string& theString) {
+    std::istringstream s(theString);
+    return GetFromStream(s);
+}
 
-    file.close();
-    return &board;
+Board GetFromFile(const std::string& fileName) {
+    std::fstream file;
+    file.open(fileName, std::ios::in);
+
+    // Otwarcie pliku
+
+    if (!file.good()) {
+        error("File is not Exist!!!");
+        throw FILE_NOT_GOOD;
+    } else {
+        auto r = GetFromStream(file);
+        file.close();
+        return r;
+    }
+}
+
+Board GetFromFile() {
+    return GetFromFile("save.txt");
 }

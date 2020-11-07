@@ -18,6 +18,8 @@ static const short unsigned int figHPvalues[] = {5, 3, 7, 8, 12, 20};
 static const short unsigned int figDMGvalues[] = {2, 5, 3, 2, 3, 2};
 static const std::string figNames[] =
 		{"Pionek", "Kon", "Goniec", "Wieza", "Hetman", "Krol"};
+static const std::string figEngNames[] =
+        {"Pawn", "Knight", "Bishop", "Rook", "Queen", "King"};
 static const std::string emptyFieldNameString = "Field";
 static const std::string obstacleNameString = "Obstacle";
 
@@ -205,3 +207,4 @@ public:
 };
 
 bool canThisAttack(figType type, int cordX, int cordY, int targetX, int targetY);
+bool setHP(int dmg, Figure *target, bool player);
